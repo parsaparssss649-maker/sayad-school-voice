@@ -1,182 +1,1057 @@
-<!doctype html>
-<html lang="fa" dir="rtl">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#071a12">
-<title>سامانه صوتی دبیرستان شهید صیاد شیرازی</title>
-<style>
-:root{--bg:#07130e;--bg2:#0a1e15;--panel:rgba(15,38,27,.78);--line:rgba(255,255,255,.09);--text:#f4f8f5;--muted:#9db3a5;--green:#17b978;--green2:#0b8755;--gold:#d9b56b;--red:#df6474;--shadow:0 22px 70px rgba(0,0,0,.35)}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Tahoma,Arial,sans-serif;background:radial-gradient(circle at 85% 10%,rgba(23,185,120,.13),transparent 30%),radial-gradient(circle at 10% 90%,rgba(217,181,107,.07),transparent 28%),linear-gradient(145deg,var(--bg),var(--bg2));color:var(--text)}
-body{overflow-x:hidden}.hidden{display:none!important}.wrap{width:min(1180px,calc(100% - 28px));margin:auto}.glass{background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.018));border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(18px)}
-.top{position:sticky;top:0;z-index:20;background:rgba(4,13,9,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:12px}.badge{width:45px;height:45px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#16ba78,#08714b);font-weight:900;font-size:18px;box-shadow:0 12px 30px rgba(23,185,120,.18)}.brand h1{font-size:14px;margin:0}.brand p{font-size:10px;color:var(--muted);margin:5px 0 0}.nav-right{display:flex;gap:8px;align-items:center}.pill{border:1px solid var(--line);background:rgba(255,255,255,.03);padding:9px 11px;border-radius:999px;font-size:10px;color:#cbd9d0}.pill.green{border-color:rgba(23,185,120,.22);color:#8ce7be}
-.hero{padding:52px 0 36px}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center}.eyebrow{font-size:11px;color:#82dfb2;letter-spacing:1px;font-weight:800}.hero h2{font-size:clamp(38px,6vw,68px);line-height:1.1;margin:12px 0 16px;letter-spacing:-2px}.hero h2 span{color:#64d69d}.hero-text{font-size:15px;line-height:2;color:var(--muted);max-width:650px}.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.btn{border:0;border-radius:14px;padding:13px 17px;font-weight:900;cursor:pointer;color:white}.btn-primary{background:linear-gradient(135deg,#19bc78,#087c50);box-shadow:0 14px 32px rgba(23,185,120,.2)}.btn-ghost{background:rgba(255,255,255,.03);border:1px solid var(--line)}
-.hero-card{border-radius:28px;overflow:hidden;position:relative;min-height:410px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.015)),#0a1711}.hero-image{width:100%;height:410px;object-fit:cover;object-position:center 20%;display:block;filter:saturate(.95) contrast(1.04)}.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,14,9,.05),rgba(5,14,9,.28) 50%,rgba(5,14,9,.92))}.hero-caption{position:absolute;bottom:20px;right:20px;left:20px}.hero-caption h3{margin:0 0 7px;font-size:20px}.hero-caption p{margin:0;color:#bfcdc4;font-size:11px;line-height:1.9}.seal{position:absolute;top:18px;right:18px;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(217,181,107,.35);background:rgba(4,14,9,.62);color:#e8cc92;font-size:20px}
-.features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}.feature{padding:17px;border-radius:18px}.feature strong{font-size:12px;display:block;margin-bottom:7px}.feature span{font-size:10px;color:var(--muted);line-height:1.8}
-.section{padding:25px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:14px}.section-head h3{margin:7px 0 0;font-size:22px}.kicker{font-size:10px;color:#82dfb2;font-weight:900}.student-card{border-radius:24px;padding:20px}.student-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field label{display:block;font-size:10px;color:#91a89a;margin:0 0 7px}.input{width:100%;height:50px;border-radius:14px;border:1px solid var(--line);outline:none;background:rgba(0,0,0,.14);color:white;padding:0 14px}.input:focus{border-color:rgba(23,185,120,.5);box-shadow:0 0 0 4px rgba(23,185,120,.08)}.save-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px}.saved-note{font-size:10px;color:#7e9587}
-.dashboard{padding:18px 0 45px}.hello{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:15px}.hello h3{margin:7px 0;font-size:24px}.hello p{margin:0;color:var(--muted);font-size:11px}.class-chip{border:1px solid rgba(217,181,107,.25);color:#e5cb98;background:rgba(217,181,107,.06);border-radius:999px;padding:10px 13px;font-size:11px}.audio-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:15px}.panel{border-radius:22px;padding:18px}.audio-list{display:grid;gap:10px}.audio-item{display:grid;grid-template-columns:auto 1fr auto;gap:13px;align-items:center;padding:13px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.025)}.audio-icon{width:50px;height:50px;border-radius:15px;background:linear-gradient(145deg,rgba(23,185,120,.18),rgba(217,181,107,.08));display:grid;place-items:center;font-size:20px}.audio-title{font-size:13px;font-weight:900}.audio-meta{font-size:9px;color:#809689;margin-top:5px}.mini-progress{height:5px;background:rgba(255,255,255,.07);border-radius:999px;overflow:hidden;margin-top:9px}.mini-progress span{height:100%;display:block;background:linear-gradient(90deg,#17b978,#84d99a);border-radius:999px}.play{width:43px;height:43px;border-radius:13px;border:0;color:#fff;background:linear-gradient(145deg,#16b879,#086b47);font-weight:900}.empty{min-height:120px;border:1px dashed var(--line);border-radius:18px;display:grid;place-items:center;color:#779084;font-size:11px}
-.player{position:sticky;top:93px}.cover{height:200px;border-radius:19px;overflow:hidden;position:relative}.cover img{width:100%;height:100%;object-fit:cover}.cover .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,20,12,.08),rgba(7,20,12,.88))}.now{position:absolute;bottom:14px;right:14px;left:14px}.now b{font-size:15px}.now small{display:block;color:#a0b3a6;margin-top:5px}.times{display:flex;justify-content:space-between;color:#7f9486;font-size:9px;margin-top:14px}.range{width:100%;accent-color:#19b978}.controls{display:flex;justify-content:center;gap:10px;margin-top:12px}.ctl{width:44px;height:44px;border-radius:13px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:#dce8e0}.main{width:54px;height:54px;border-radius:17px;background:linear-gradient(145deg,#18ba77,#08754c);color:#fff;border:0}
-.page-hidden{display:none!important}.fade-in{animation:fadeIn .25s ease}.teacher-panel{margin:15px 0 45px}.teacher-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.stat{padding:15px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.025)}.stat span{display:block;color:#85998c;font-size:9px;margin-bottom:7px}.stat b{font-size:23px}@keyframes fadeIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}@media(max-width:700px){.teacher-stats{grid-template-columns:repeat(2,1fr)}}footer{padding:22px 0 30px;color:#758a7d;text-align:center;font-size:10px}.credit{margin-top:6px;color:#7f9a8b}.modal{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:16px}.back{position:absolute;inset:0;background:rgba(0,0,0,.57);backdrop-filter:blur(7px)}.modal-card{position:relative;width:min(430px,100%);padding:24px;border-radius:25px}.modal-card h3{margin:8px 0;font-size:25px}.modal-card p{margin:0 0 14px;color:#84988b;font-size:11px;line-height:1.9}.close{position:absolute;top:10px;left:10px;width:35px;height:35px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:#a7b8ac;border-radius:11px}.modal-actions{margin-top:12px}.error{color:#f493a1;font-size:10px;margin-top:9px;min-height:14px}
-@media(max-width:920px){.hero-grid,.audio-wrap{grid-template-columns:1fr}.hero-card{max-width:740px;margin:auto}.player{position:static}.features{grid-template-columns:1fr}.student-grid{grid-template-columns:1fr}}@media(max-width:620px){.wrap{width:min(100% - 18px,1180px)}.nav{height:67px}.pill.hide-m{display:none}.hero{padding-top:30px}.hero h2{font-size:42px}.hero-card,.hero-image{min-height:330px;height:330px}.hero-image{object-position:center}.hero-actions .btn{width:100%}.hello{align-items:flex-start;flex-direction:column}.audio-item{grid-template-columns:auto 1fr}.audio-item .play{grid-column:1/-1;width:100%}}
-</style>
-</head>
-<body>
-<header class="top"><div class="wrap nav"><div class="brand"><div class="badge">ص</div><div><h1>دبیرستان شهید صیاد شیرازی</h1><p>سامانه صوتی و آموزشی مدرسه</p></div></div><div class="nav-right"><button class="pill" id="teacherBtn" style="cursor:pointer">پنل معلم</button></div></div></header>
-<main>
-<section class="hero" id="homeHero"><div class="wrap hero-grid"><div><div class="eyebrow">یادگیری • مدرسه • فرهنگ و فعالیت دانش‌آموزی</div><h2>صدای مدرسه،<br><span>همراه دانش‌آموز</span></h2><p class="hero-text">سامانه صوتی دبیرستان شهید صیاد شیرازی برای انتشار فایل‌های آموزشی و فرهنگی مدرسه، با ثبت نام و شماره کلاس هر دانش‌آموز.</p><div class="hero-actions"><button class="btn btn-primary" id="studentBtn">🎧 ورود دانش‌آموز</button><button class="btn btn-ghost" id="aboutBtn">📜 درباره سامانه</button></div><div class="features"><div class="feature glass"><strong>🎧 پخش صوتی</strong><span>فایل‌های مدرسه را آنلاین گوش بده و از همان نقطه ادامه بده.</span></div><div class="feature glass"><strong>💾 ذخیره مشخصات</strong><span>نام و کلاس مثل «۸۰۲» روی همین دستگاه ذخیره می‌شود.</span></div><div class="feature glass"><strong>🟢 فضای مدرسه</strong><span>طراحی با حال‌وهوای مدرسه و بخش بسیج دانش‌آموزی.</span></div></div></div><div class="hero-card glass"><img class="hero-image" alt="سپهبد شهید علی صیاد شیرازی" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/General_Shirazi.jpg"><div class="hero-overlay"></div><div class="seal">✦</div><div class="hero-caption"><h3>شهید سپهبد علی صیاد شیرازی</h3><p>تصویر از Wikimedia Commons؛ صفحه پرونده و اطلاعات مجوز در پایین سامانه معرفی شده است.</p></div></div></div></section>
-<section class="section" id="studentLoginSection"><div class="wrap"><div class="section-head"><div><div class="kicker">ورود سریع</div><h3>مشخصات دانش‌آموز</h3></div></div><div class="student-card panel glass"><div class="student-grid"><div class="field"><label for="name">نام و نام خانوادگی</label><input class="input" id="name" maxlength="60" placeholder="مثلاً پارسا شیشه‌گر"></div><div class="field"><label for="klass">شماره کلاس</label><input class="input" id="klass" maxlength="10" inputmode="numeric" value="802" placeholder="مثلاً 802"></div></div><div class="save-row"><span class="saved-note" id="savedNote">اطلاعات روی همین دستگاه ذخیره می‌شود.</span><button class="btn btn-primary" id="saveStudent">ذخیره و ورود</button></div></div></div></section>
-<section class="dashboard hidden" id="studentPanel"><div class="wrap"><div class="hello"><div><div class="kicker">داشبورد دانش‌آموز</div><h3>سلام <span id="helloName">دوست من</span> 👋</h3><p>فایل‌های صوتی منتشرشده مدرسه اینجا نمایش داده می‌شوند.</p></div><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end"><div class="class-chip">کلاس <span id="helloClass">۸۰۲</span></div><button class="btn btn-ghost" style="padding:9px 11px;font-size:10px" id="logoutStudent">خروج</button></div></div><div class="audio-wrap"><div class="panel glass"><div class="section-head"><div><div class="kicker">کتابخانه صوتی</div><h3>صداهای مدرسه</h3></div><button class="btn btn-ghost" style="padding:9px 11px;font-size:10px" id="refresh">↻ بروزرسانی</button></div><div id="audioList" class="audio-list"><div class="empty">در حال دریافت فایل‌ها...</div></div></div><div class="panel glass player"><div class="cover"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/General_Shirazi.jpg" alt="شهید صیاد شیرازی"><div class="shade"></div><div class="now"><b id="nowTitle">آماده برای پخش</b><small id="nowMeta">یک فایل صوتی انتخاب کن</small></div></div><audio id="audio" preload="metadata"></audio><div class="times"><span id="cur">00:00</span><span id="dur">00:00</span></div><input class="range" id="seek" type="range" min="0" max="100" value="0"><div class="controls"><button class="ctl" id="back">↶ ۱۰</button><button class="main" id="play">▶</button><button class="ctl" id="forward">↷ ۱۰</button></div></div></div></div></section>
-</main>
-<section class="teacher-panel page-hidden" id="teacherPanel"><div class="wrap"><div class="panel glass"><div class="section-head"><div><div class="kicker">پنل مدیریت</div><h3>آمار سامانه</h3></div><div style="display:flex;gap:8px"><button class="btn btn-ghost" style="padding:9px 11px;font-size:10px" id="refreshTeacher">↻ بروزرسانی</button><button class="btn btn-ghost" style="padding:9px 11px;font-size:10px" id="logoutTeacher">خروج</button></div></div><div class="teacher-stats"><div class="stat"><span>دانش‌آموزها</span><b id="tStudents">۰</b></div><div class="stat"><span>فایل‌ها</span><b id="tAudios">۰</b></div><div class="stat"><span>رکوردهای گوش‌دادن</span><b id="tProgress">۰</b></div><div class="stat"><span>میانگین پیشرفت</span><b id="tAverage">۰٪</b></div></div><div id="teacherMessage" style="margin-top:14px;color:#8ba095;font-size:10px"></div></div></div></section>
-<footer><div>سامانه صوتی دبیرستان شهید صیاد شیرازی</div><div class="credit">ساخته شده توسط پارسا شیشه گر 802</div><div class="credit">منبع تصویر شهید صیاد شیرازی: Wikimedia Commons — General Shirazi.jpg</div></footer>
-<div class="modal hidden" id="about"><div class="back" data-close="about"></div><div class="modal-card glass"><button class="close" data-close="about">×</button><div class="kicker">درباره سامانه</div><h3>سامانه صوتی مدرسه 🎧</h3><p>این نسخه برای استفاده مدرسه‌ای طراحی شده و می‌تواند نام و شماره کلاس دانش‌آموز را روی دستگاه ذخیره کند. فایل‌های صوتی منتشرشده در سامانه مدرسه از همین بخش قابل دسترسی هستند.</p><button class="btn btn-primary" data-close="about">باشه</button></div></div>
-<div class="modal hidden" id="teacher"><div class="back" data-close="teacher"></div><div class="modal-card glass"><button class="close" data-close="teacher">×</button><div class="kicker">دسترسی مدیریت</div><h3>پنل معلم</h3><p>کد مدیریت را وارد کن.</p><input class="input" id="teacherCode" type="password" placeholder="کد مدیریت"><div class="error" id="teacherError"></div><div class="modal-actions"><button class="btn btn-primary" style="width:100%" id="teacherLogin">ورود به پنل</button></div></div></div>
-<script>const API='https://sayad-voice-api.parsaparssss649.workers.dev';
-const $=id=>document.getElementById(id);
-const fa=n=>String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
-const fmt=s=>{s=Math.max(0,Math.floor(Number(s)||0));let m=Math.floor(s/60),x=s%60;return `${String(m).padStart(2,'0')}:${String(x).padStart(2,'0')}`};
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let audios=[],progress={},current=null;
+<script>
+const API = 'https://sayad-voice-api.parsaparssss649.workers.dev';
 
-function showStudentPage(){
+const $ = id => document.getElementById(id);
+
+const fa = n =>
+  String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+
+const fmt = s => {
+  s = Math.max(0, Math.floor(Number(s) || 0));
+  const m = Math.floor(s / 60);
+  const x = s % 60;
+  return `${String(m).padStart(2, '0')}:${String(x).padStart(2, '0')}`;
+};
+
+const esc = s =>
+  String(s ?? '').replace(/[&<>"']/g, c => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  }[c]));
+
+let audios = [];
+let progress = {};
+let current = null;
+
+/* =========================
+   PAGE NAVIGATION
+========================= */
+
+function showStudentPage() {
   $('homeHero').classList.add('page-hidden');
   $('studentLoginSection').classList.add('page-hidden');
   $('studentPanel').classList.remove('hidden');
   $('studentPanel').classList.add('fade-in');
   $('teacherPanel').classList.add('page-hidden');
-  history.replaceState(null,'','#student');
+
+  history.replaceState(null, '', '#student');
 }
-function showHomePage(){
+
+function showHomePage() {
   $('homeHero').classList.remove('page-hidden');
   $('studentLoginSection').classList.remove('page-hidden');
   $('studentPanel').classList.add('hidden');
   $('teacherPanel').classList.add('page-hidden');
-  history.replaceState(null,'','#home');
+
+  history.replaceState(null, '', '#home');
 }
-function showTeacherPage(){
+
+function showTeacherPage() {
   $('homeHero').classList.add('page-hidden');
   $('studentLoginSection').classList.add('page-hidden');
   $('studentPanel').classList.add('hidden');
+
   $('teacherPanel').classList.remove('page-hidden');
   $('teacherPanel').classList.add('fade-in');
-  history.replaceState(null,'','#teacher');
+
+  history.replaceState(null, '', '#teacher');
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 }
-function modal(id,show){$(id).classList.toggle('hidden',!show)}
-async function api(path,opt={}){
-  const h=new Headers(opt.headers||{});
-  if(opt.body && !(opt.body instanceof FormData)) h.set('Content-Type','application/json');
-  const r=await fetch(API+path,{...opt,headers:h});
-  const t=await r.text(); let d={};
-  try{d=t?JSON.parse(t):{}}catch{d={error:t}}
-  if(!r.ok) throw new Error(d.error||d.message||('HTTP '+r.status));
+
+function modal(id, show) {
+  $(id).classList.toggle('hidden', !show);
+}
+
+/* =========================
+   API
+========================= */
+
+async function api(path, opt = {}) {
+  const h = new Headers(opt.headers || {});
+
+  if (opt.body && !(opt.body instanceof FormData)) {
+    h.set('Content-Type', 'application/json');
+  }
+
+  const r = await fetch(API + path, {
+    ...opt,
+    headers: h
+  });
+
+  const t = await r.text();
+
+  let d = {};
+
+  try {
+    d = t ? JSON.parse(t) : {};
+  } catch {
+    d = {
+      error: t
+    };
+  }
+
+  if (!r.ok) {
+    throw new Error(
+      d.error ||
+      d.message ||
+      ('HTTP ' + r.status)
+    );
+  }
+
   return d;
 }
-function client(){
-  let x=localStorage.getItem('sayad_client_id');
-  if(!x){x=crypto.randomUUID?crypto.randomUUID():'c_'+Date.now()+'_'+Math.random().toString(36).slice(2);localStorage.setItem('sayad_client_id',x)}
+
+/* =========================
+   CLIENT ID
+========================= */
+
+function client() {
+  let x = localStorage.getItem('sayad_client_id');
+
+  if (!x) {
+    x =
+      (crypto.randomUUID
+        ? crypto.randomUUID()
+        : 'c_' +
+          Date.now() +
+          '_' +
+          Math.random().toString(36).slice(2));
+
+    localStorage.setItem('sayad_client_id', x);
+  }
+
   return x;
 }
-async function loginStudent(){
-  const name=$('name').value.trim(), klass=$('klass').value.trim();
-  if(!name||!klass){$('savedNote').textContent='نام و شماره کلاس را کامل وارد کن.';return}
-  localStorage.setItem('sayad_name',name);
-  localStorage.setItem('sayad_class',klass);
-  localStorage.setItem('sayad_logged_in','1');
-  $('helloName').textContent=name;
-  $('helloClass').textContent=fa(klass);
-  $('savedNote').textContent='ذخیره شد ✓';
-  try{await api('/api/student',{method:'POST',body:JSON.stringify({name,client_id:client(),class:klass})})}catch(e){}
+
+/* =========================
+   STUDENT LOGIN
+========================= */
+
+async function loginStudent() {
+  const name = $('name').value.trim();
+  const klass = $('klass').value.trim();
+
+  if (!name || !klass) {
+    $('savedNote').textContent =
+      'نام و شماره کلاس را کامل وارد کن.';
+    return;
+  }
+
+  localStorage.setItem('sayad_name', name);
+  localStorage.setItem('sayad_class', klass);
+  localStorage.setItem('sayad_logged_in', '1');
+
+  $('helloName').textContent = name;
+  $('helloClass').textContent = fa(klass);
+
+  $('savedNote').textContent = 'ذخیره شد ✓';
+
+  /*
+    اطلاعات دانش‌آموز را به Worker می‌فرستیم.
+    اگر Worker خطا بدهد، ورود محلی همچنان انجام می‌شود.
+  */
+  try {
+    await api('/api/student', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: name,
+        client_id: client(),
+        class: klass
+      })
+    });
+  } catch (e) {
+    console.log('Student registration warning:', e);
+  }
+
   showStudentPage();
+
   await load();
 }
-async function load(){
-  try{
-    const a=await api('/api/audios'); audios=a.audios||[];
-    const p=await api('/api/progress?client_id='+encodeURIComponent(client()));
-    progress={}; for(const x of(p.progress||[])) progress[x.audio_id]=x;
-    render();
-  }catch(e){$('audioList').innerHTML='<div class="empty">ارتباط با سرور برقرار نشد.</div>'}
-}
-function render(){
-  if(!audios.length){$('audioList').innerHTML='<div class="empty">هنوز فایل صوتی منتشر نشده است 🎧</div>';return}
-  $('audioList').innerHTML=audios.map(a=>{const p=progress[a.id],pc=Math.max(0,Math.min(100,Number(p?.percent||0)));return `<div class="audio-item"><div class="audio-icon">♫</div><div><div class="audio-title">${esc(a.title)}</div><div class="audio-meta">${esc(a.filename||'فایل صوتی')} · ${fa(pc.toFixed(0))}٪ گوش داده شده</div><div class="mini-progress"><span style="width:${pc}%"></span></div></div><button class="play" data-id="${a.id}">▶</button></div>`}).join('');
-  document.querySelectorAll('[data-id]').forEach(b=>b.onclick=()=>play(Number(b.dataset.id)));
-}
-async function play(id){
-  const a=audios.find(x=>x.id===id); if(!a)return; current=id;
-  $('nowTitle').textContent=a.title; $('nowMeta').textContent=a.filename||'فایل صوتی';
-  const p=progress[id],el=$('audio'); el.src=API+'/api/audio?id='+encodeURIComponent(id);
-  el.onloadedmetadata=()=>{if(p?.position&&p.position<el.duration-2)el.currentTime=p.position;el.play().catch(()=>{});$('play').textContent='❚❚'};el.load();
-}
-async function saveProgress(){
-  const el=$('audio'); if(!current||!Number.isFinite(el.duration))return;
-  try{const x=await api('/api/progress',{method:'POST',body:JSON.stringify({client_id:client(),audio_id:current,position:el.currentTime,duration:el.duration})});progress[current]={audio_id:current,position:el.currentTime,duration:el.duration,percent:x.percent};render()}catch(e){}
-}
-async function loadTeacher(){
-  const code=sessionStorage.getItem('sayad_teacher'); if(!code)return false;
-  try{
-    const x=await api('/api/teacher/stats',{headers:{'X-Teacher-Code':code}});
-    if(!x.ok) throw new Error();
-    const stats=x.stats||[], students=x.students||[], details=x.details||[];
-    $('tStudents').textContent=fa(students.length);
-    $('tAudios').textContent=fa(stats.length);
-    $('tProgress').textContent=fa(details.length);
-    const avg=stats.length?stats.reduce((s,a)=>s+Number(a.average_percent||0),0)/stats.length:0;
-    $('tAverage').textContent=fa(avg.toFixed(0))+'٪';
-    $('teacherMessage').textContent='ورود معلم ذخیره شد و این دستگاه دفعه بعد هم پنل را باز می‌کند.';
-    showTeacherPage(); return true;
-  }catch(e){sessionStorage.removeItem('sayad_teacher');return false}
-}
-$('saveStudent').onclick=loginStudent;
-$('studentBtn').onclick=()=>{
-  if(localStorage.getItem('sayad_logged_in')==='1' && localStorage.getItem('sayad_name')) showStudentPage();
-  else document.querySelector('.student-card').scrollIntoView({behavior:'smooth'});
-};
-$('aboutBtn').onclick=()=>modal('about',true);
-$('teacherBtn').onclick=async()=>{
-  if(sessionStorage.getItem('sayad_teacher')){await loadTeacher();return}
-  modal('teacher',true)
-};
-document.querySelectorAll('[data-close]').forEach(x=>x.onclick=()=>modal(x.dataset.close,false));
-$('teacherLogin').onclick=async()=>{
-  const code=$('teacherCode').value.trim();$('teacherError').textContent='';if(!code)return;
-  try{
-    const x=await api('/api/teacher/stats',{headers:{'X-Teacher-Code':code}});
-    if(!x.ok) throw Error();
-    sessionStorage.setItem('sayad_teacher',code);modal('teacher',false);$('teacherCode').value='';
-    $('tStudents').textContent=fa((x.students||[]).length);
-    $('tAudios').textContent=fa((x.stats||[]).length);
-    $('tProgress').textContent=fa((x.details||[]).length);
-    const avg=(x.stats||[]).length?(x.stats||[]).reduce((s,a)=>s+Number(a.average_percent||0),0)/(x.stats||[]).length:0;
-    $('tAverage').textContent=fa(avg.toFixed(0))+'٪';
-    $('teacherMessage').textContent='ورود موفق بود.';showTeacherPage();
-  }catch(e){$('teacherError').textContent='کد مدیریت نادرست است یا سرور پاسخ نداد'}
-};
-$('refresh').onclick=load;
-$('play').onclick=()=>{if($('audio').paused)$('audio').play();else $('audio').pause()};
-$('back').onclick=()=>{$('audio').currentTime=Math.max(0,$('audio').currentTime-10);saveProgress()};
-$('forward').onclick=()=>{$('audio').currentTime=Math.min($('audio').duration||0,$('audio').currentTime+10);saveProgress()};
-$('audio').addEventListener('play',()=>$('play').textContent='❚❚');
-$('audio').addEventListener('pause',()=>$('play').textContent='▶');
-$('audio').addEventListener('timeupdate',()=>{$('cur').textContent=fmt($('audio').currentTime);$('dur').textContent=fmt($('audio').duration);$('seek').value=$('audio').duration?($('audio').currentTime/$('audio').duration)*100:0;if(Math.floor($('audio').currentTime)%5===0)saveProgress()});
-$('seek').oninput=()=>{$('audio').currentTime=(Number($('seek').value)/100)*($('audio').duration||0)};
-$('logoutStudent').onclick=()=>{
-  $('audio').pause(); $('audio').removeAttribute('src');
-  localStorage.removeItem('sayad_name');localStorage.removeItem('sayad_class');localStorage.removeItem('sayad_logged_in');localStorage.removeItem('sayad_client_id');
-  $('name').value='';$('klass').value='802';showHomePage();
-};
-$('refreshTeacher').onclick=loadTeacher;
-$('logoutTeacher').onclick=()=>{sessionStorage.removeItem('sayad_teacher');showHomePage()};
 
-(async function startup(){
-  const n=localStorage.getItem('sayad_name'),c=localStorage.getItem('sayad_class');
-  if(n)$('name').value=n;if(c)$('klass').value=c;
-  if(await loadTeacher()) return;
-  if(localStorage.getItem('sayad_logged_in')==='1' && n && c){
-    $('helloName').textContent=n;$('helloClass').textContent=fa(c);showStudentPage();await load();
-  }else if(location.hash==='#student'){
-    showStudentPage();
+/* =========================
+   LOAD AUDIO
+========================= */
+
+async function load() {
+  try {
+    const a = await api('/api/audios');
+
+    audios = a.audios || [];
+
+    const p = await api(
+      '/api/progress?client_id=' +
+      encodeURIComponent(client())
+    );
+
+    progress = {};
+
+    for (const x of (p.progress || [])) {
+      progress[x.audio_id] = x;
+    }
+
+    render();
+
+  } catch (e) {
+
+    console.error('Audio load error:', e);
+
+    $('audioList').innerHTML =
+      '<div class="empty">ارتباط با سرور برقرار نشد.</div>';
   }
-})();</script>
-</body>
-</html>
+}
+
+/* =========================
+   RENDER AUDIO LIST
+========================= */
+
+function render() {
+  if (!audios.length) {
+    $('audioList').innerHTML =
+      '<div class="empty">هنوز فایل صوتی منتشر نشده است 🎧</div>';
+    return;
+  }
+
+  $('audioList').innerHTML = audios.map(a => {
+
+    const p = progress[a.id];
+
+    const pc = Math.max(
+      0,
+      Math.min(
+        100,
+        Number(p?.percent || 0)
+      )
+    );
+
+    return `
+      <div class="audio-item">
+
+        <div class="audio-icon">
+          ♫
+        </div>
+
+        <div>
+
+          <div class="audio-title">
+            ${esc(a.title)}
+          </div>
+
+          <div class="audio-meta">
+            ${esc(a.filename || 'فایل صوتی')}
+            ·
+            ${fa(pc.toFixed(0))}٪ گوش داده شده
+          </div>
+
+          <div class="mini-progress">
+            <span style="width:${pc}%"></span>
+          </div>
+
+        </div>
+
+        <button
+          class="play"
+          data-id="${a.id}"
+        >
+          ▶
+        </button>
+
+      </div>
+    `;
+
+  }).join('');
+
+  document
+    .querySelectorAll('[data-id]')
+    .forEach(b => {
+      b.onclick = () => play(
+        Number(b.dataset.id)
+      );
+    });
+}
+
+/* =========================
+   PLAY AUDIO
+========================= */
+
+async function play(id) {
+
+  const a = audios.find(
+    x => x.id === id
+  );
+
+  if (!a) return;
+
+  current = id;
+
+  $('nowTitle').textContent =
+    a.title;
+
+  $('nowMeta').textContent =
+    a.filename || 'فایل صوتی';
+
+  const p = progress[id];
+
+  const el = $('audio');
+
+  el.src =
+    API +
+    '/api/audio?id=' +
+    encodeURIComponent(id);
+
+  el.onloadedmetadata = () => {
+
+    if (
+      p?.position &&
+      p.position < el.duration - 2
+    ) {
+      el.currentTime = p.position;
+    }
+
+    el.play()
+      .then(() => {
+        $('play').textContent = '❚❚';
+      })
+      .catch(() => {});
+
+  };
+
+  el.load();
+}
+
+/* =========================
+   SAVE PROGRESS
+========================= */
+
+async function saveProgress() {
+
+  const el = $('audio');
+
+  if (
+    !current ||
+    !Number.isFinite(el.duration)
+  ) {
+    return;
+  }
+
+  try {
+
+    const x = await api(
+      '/api/progress',
+      {
+        method: 'POST',
+
+        body: JSON.stringify({
+          client_id: client(),
+          audio_id: current,
+          position: el.currentTime,
+          duration: el.duration
+        })
+      }
+    );
+
+    progress[current] = {
+      audio_id: current,
+      position: el.currentTime,
+      duration: el.duration,
+      percent: x.percent
+    };
+
+    render();
+
+  } catch (e) {
+    console.log(
+      'Progress save warning:',
+      e
+    );
+  }
+}
+
+/* =========================
+   TEACHER LOAD
+========================= */
+
+async function loadTeacher() {
+
+  const code =
+    sessionStorage.getItem(
+      'sayad_teacher'
+    );
+
+  if (!code) {
+    return false;
+  }
+
+  /*
+    اول تلاش می‌کنیم آمار را بگیریم.
+  */
+
+  try {
+
+    const x = await api(
+      '/api/teacher/stats',
+      {
+        headers: {
+          'X-Teacher-Code': code
+        }
+      }
+    );
+
+    if (!x.ok) {
+      throw new Error(
+        'TEACHER_AUTH_FAILED'
+      );
+    }
+
+    const stats =
+      x.stats || [];
+
+    const students =
+      x.students || [];
+
+    const details =
+      x.details || [];
+
+    $('tStudents').textContent =
+      fa(students.length);
+
+    $('tAudios').textContent =
+      fa(stats.length);
+
+    $('tProgress').textContent =
+      fa(details.length);
+
+    const avg =
+      stats.length
+        ? stats.reduce(
+            (s, a) =>
+              s +
+              Number(
+                a.average_percent || 0
+              ),
+            0
+          ) / stats.length
+        : 0;
+
+    $('tAverage').textContent =
+      fa(avg.toFixed(0)) + '٪';
+
+    $('teacherMessage').textContent =
+      'آمار با موفقیت دریافت شد ✓';
+
+    /*
+      حتی بعد از دریافت آمار،
+      پنل را حتماً نمایش بده.
+    */
+    showTeacherPage();
+
+    return true;
+
+  } catch (e) {
+
+    console.log(
+      'Teacher statistics error:',
+      e
+    );
+
+    /*
+      اگر قبلاً وارد شده بود ولی
+      آمار مشکل داشت، پنل را مخفی نکن.
+    */
+
+    $('tStudents').textContent = '—';
+    $('tAudios').textContent = '—';
+    $('tProgress').textContent = '—';
+    $('tAverage').textContent = '—';
+
+    $('teacherMessage').textContent =
+      'پنل باز شد، اما دریافت آمار از سرور انجام نشد.';
+
+    showTeacherPage();
+
+    return true;
+  }
+}
+
+/* =========================
+   STUDENT BUTTON
+========================= */
+
+$('studentBtn').onclick = () => {
+
+  if (
+    localStorage.getItem(
+      'sayad_logged_in'
+    ) === '1' &&
+    localStorage.getItem(
+      'sayad_name'
+    )
+  ) {
+
+    showStudentPage();
+
+    load();
+
+    return;
+  }
+
+  document
+    .querySelector('.student-card')
+    .scrollIntoView({
+      behavior: 'smooth'
+    });
+};
+
+/* =========================
+   ABOUT
+========================= */
+
+$('aboutBtn').onclick = () => {
+  modal('about', true);
+};
+
+/* =========================
+   TEACHER BUTTON
+========================= */
+
+$('teacherBtn').onclick = async () => {
+
+  /*
+    اگر قبلاً کد معلم روی این دستگاه
+    ذخیره شده، مستقیم پنل را باز کن.
+  */
+
+  const savedTeacher =
+    sessionStorage.getItem(
+      'sayad_teacher'
+    );
+
+  if (savedTeacher) {
+
+    showTeacherPage();
+
+    await loadTeacher();
+
+    return;
+  }
+
+  modal(
+    'teacher',
+    true
+  );
+
+  setTimeout(() => {
+    $('teacherCode').focus();
+  }, 100);
+};
+
+/* =========================
+   CLOSE MODALS
+========================= */
+
+document
+  .querySelectorAll('[data-close]')
+  .forEach(x => {
+
+    x.onclick = () => {
+
+      modal(
+        x.dataset.close,
+        false
+      );
+
+    };
+
+  });
+
+/* =========================
+   TEACHER LOGIN
+========================= */
+
+$('teacherLogin').onclick = async () => {
+
+  const code =
+    $('teacherCode').value.trim();
+
+  $('teacherError').textContent = '';
+
+  if (!code) {
+
+    $('teacherError').textContent =
+      'کد مدیریت را وارد کن.';
+
+    return;
+  }
+
+  /*
+    کد روی Session ذخیره می‌شود.
+  */
+  sessionStorage.setItem(
+    'sayad_teacher',
+    code
+  );
+
+  /*
+    اینجا مهم‌ترین تغییر:
+    پنل معلم را قبل از درخواست آمار باز می‌کنیم.
+  */
+
+  modal(
+    'teacher',
+    false
+  );
+
+  $('teacherCode').value = '';
+
+  showTeacherPage();
+
+  $('teacherMessage').textContent =
+    'در حال دریافت اطلاعات...';
+
+  /*
+    حالا آمار را می‌گیریم.
+    حتی اگر این درخواست خراب شود،
+    پنل بسته نمی‌شود.
+  */
+
+  try {
+
+    const x = await api(
+      '/api/teacher/stats',
+      {
+        headers: {
+          'X-Teacher-Code': code
+        }
+      }
+    );
+
+    if (!x.ok) {
+      throw new Error(
+        'INVALID_TEACHER_CODE'
+      );
+    }
+
+    const stats =
+      x.stats || [];
+
+    const students =
+      x.students || [];
+
+    const details =
+      x.details || [];
+
+    $('tStudents').textContent =
+      fa(students.length);
+
+    $('tAudios').textContent =
+      fa(stats.length);
+
+    $('tProgress').textContent =
+      fa(details.length);
+
+    const avg =
+      stats.length
+        ? stats.reduce(
+            (s, a) =>
+              s +
+              Number(
+                a.average_percent || 0
+              ),
+            0
+          ) / stats.length
+        : 0;
+
+    $('tAverage').textContent =
+      fa(avg.toFixed(0)) + '٪';
+
+    $('teacherMessage').textContent =
+      'ورود موفق بود و آمار دریافت شد ✓';
+
+  } catch (e) {
+
+    console.error(
+      'Teacher login error:',
+      e
+    );
+
+    /*
+      پنل را باز نگه می‌داریم.
+    */
+
+    $('tStudents').textContent = '—';
+    $('tAudios').textContent = '—';
+    $('tProgress').textContent = '—';
+    $('tAverage').textContent = '—';
+
+    $('teacherMessage').textContent =
+      'پنل باز شد، اما سرور آمار را برنگرداند.';
+  }
+};
+
+/* =========================
+   STUDENT REFRESH
+========================= */
+
+$('refresh').onclick = async () => {
+
+  $('audioList').innerHTML =
+    '<div class="empty">در حال بروزرسانی...</div>';
+
+  await load();
+};
+
+/* =========================
+   PLAYER
+========================= */
+
+$('play').onclick = () => {
+
+  const el = $('audio');
+
+  if (!current) {
+    return;
+  }
+
+  if (el.paused) {
+
+    el.play()
+      .then(() => {
+        $('play').textContent =
+          '❚❚';
+      })
+      .catch(() => {});
+
+  } else {
+
+    el.pause();
+
+    $('play').textContent =
+      '▶';
+  }
+};
+
+$('back').onclick = () => {
+
+  const el = $('audio');
+
+  el.currentTime =
+    Math.max(
+      0,
+      el.currentTime - 10
+    );
+
+  saveProgress();
+};
+
+$('forward').onclick = () => {
+
+  const el = $('audio');
+
+  el.currentTime =
+    Math.min(
+      el.duration || 0,
+      el.currentTime + 10
+    );
+
+  saveProgress();
+};
+
+$('audio').addEventListener(
+  'play',
+  () => {
+    $('play').textContent =
+      '❚❚';
+  }
+);
+
+$('audio').addEventListener(
+  'pause',
+  () => {
+    $('play').textContent =
+      '▶';
+  }
+);
+
+$('audio').addEventListener(
+  'timeupdate',
+  () => {
+
+    const el =
+      $('audio');
+
+    $('cur').textContent =
+      fmt(el.currentTime);
+
+    $('dur').textContent =
+      fmt(el.duration);
+
+    $('seek').value =
+      el.duration
+        ? (
+            el.currentTime /
+            el.duration
+          ) * 100
+        : 0;
+
+    /*
+      هر 5 ثانیه پیشرفت ذخیره می‌شود.
+    */
+
+    if (
+      Math.floor(
+        el.currentTime
+      ) % 5 === 0
+    ) {
+      saveProgress();
+    }
+  }
+);
+
+$('seek').oninput = () => {
+
+  const el =
+    $('audio');
+
+  el.currentTime =
+    (
+      Number(
+        $('seek').value
+      ) / 100
+    ) *
+    (el.duration || 0);
+
+};
+
+/* =========================
+   STUDENT LOGOUT
+========================= */
+
+$('logoutStudent').onclick = () => {
+
+  $('audio').pause();
+
+  $('audio').removeAttribute(
+    'src'
+  );
+
+  localStorage.removeItem(
+    'sayad_name'
+  );
+
+  localStorage.removeItem(
+    'sayad_class'
+  );
+
+  localStorage.removeItem(
+    'sayad_logged_in'
+  );
+
+  localStorage.removeItem(
+    'sayad_client_id'
+  );
+
+  $('name').value = '';
+
+  $('klass').value = '802';
+
+  showHomePage();
+};
+
+/* =========================
+   TEACHER REFRESH
+========================= */
+
+$('refreshTeacher').onclick =
+  async () => {
+
+    const code =
+      sessionStorage.getItem(
+        'sayad_teacher'
+      );
+
+    if (!code) {
+
+      showHomePage();
+
+      return;
+    }
+
+    $('teacherMessage').textContent =
+      'در حال بروزرسانی آمار...';
+
+    try {
+
+      const x = await api(
+        '/api/teacher/stats',
+        {
+          headers: {
+            'X-Teacher-Code':
+              code
+          }
+        }
+      );
+
+      if (!x.ok) {
+        throw new Error();
+      }
+
+      const stats =
+        x.stats || [];
+
+      const students =
+        x.students || [];
+
+      const details =
+        x.details || [];
+
+      $('tStudents').textContent =
+        fa(students.length);
+
+      $('tAudios').textContent =
+        fa(stats.length);
+
+      $('tProgress').textContent =
+        fa(details.length);
+
+      const avg =
+        stats.length
+          ? stats.reduce(
+              (s, a) =>
+                s +
+                Number(
+                  a.average_percent ||
+                  0
+                ),
+              0
+            ) / stats.length
+          : 0;
+
+      $('tAverage').textContent =
+        fa(avg.toFixed(0)) +
+        '٪';
+
+      $('teacherMessage').textContent =
+        'آمار بروزرسانی شد ✓';
+
+    } catch (e) {
+
+      console.error(
+        'Teacher refresh error:',
+        e
+      );
+
+      $('teacherMessage').textContent =
+        'پنل فعال است، ولی دریافت آمار انجام نشد.';
+    }
+  };
+
+/* =========================
+   TEACHER LOGOUT
+========================= */
+
+$('logoutTeacher').onclick = () => {
+
+  sessionStorage.removeItem(
+    'sayad_teacher'
+  );
+
+  showHomePage();
+};
+
+/* =========================
+   STARTUP
+========================= */
+
+(async function startup() {
+
+  const n =
+    localStorage.getItem(
+      'sayad_name'
+    );
+
+  const c =
+    localStorage.getItem(
+      'sayad_class'
+    );
+
+  if (n) {
+    $('name').value = n;
+  }
+
+  if (c) {
+    $('klass').value = c;
+  }
+
+  /*
+    اگر معلم قبلاً وارد شده،
+    مستقیم پنل معلم را باز کن.
+  */
+
+  const teacher =
+    sessionStorage.getItem(
+      'sayad_teacher'
+    );
+
+  if (teacher) {
+
+    showTeacherPage();
+
+    await loadTeacher();
+
+    return;
+  }
+
+  /*
+    اگر دانش‌آموز قبلاً وارد شده،
+    مستقیم داشبورد دانش‌آموز را باز کن.
+  */
+
+  if (
+    localStorage.getItem(
+      'sayad_logged_in'
+    ) === '1' &&
+    n &&
+    c
+  ) {
+
+    $('helloName').textContent =
+      n;
+
+    $('helloClass').textContent =
+      fa(c);
+
+    showStudentPage();
+
+    await load();
+
+    return;
+  }
+
+  /*
+    اگر با #student آمده،
+    صفحه دانش‌آموز را نشان بده.
+  */
+
+  if (
+    location.hash === '#student'
+  ) {
+
+    showStudentPage();
+
+    return;
+  }
+
+  /*
+    حالت پیش‌فرض
+  */
+
+  showHomePage();
+
+})();
+</script>
