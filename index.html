@@ -3,747 +3,40 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0b1710">
-<title>سامانه صوت قرآن | دبیرستان شاهد</title>
-
+<meta name="theme-color" content="#07140d">
+<title>سامانه صوت قرآن شاهد</title>
 <style>
-:root{
-  --bg:#07120c;
-  --bg2:#0c1c13;
-  --panel:#102319;
-  --panel2:#13291e;
-  --line:rgba(255,255,255,.09);
-  --text:#f4f8f5;
-  --muted:#9cafA3;
-  --green:#18b978;
-  --green2:#08754b;
-  --gold:#d8b46a;
-  --danger:#df6575;
-}
-
-*{box-sizing:border-box}
-
-html,body{
-  margin:0;
-  min-height:100%;
-  font-family:Tahoma,Arial,sans-serif;
-  color:var(--text);
-  background:
-    radial-gradient(circle at 85% 8%,rgba(24,185,120,.10),transparent 28%),
-    linear-gradient(145deg,var(--bg),var(--bg2));
-}
-
-body{
-  overflow-x:hidden;
-}
-
-button,input{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-.hidden{
-  display:none!important;
-}
-
-.wrap{
-  width:min(1180px,calc(100% - 24px));
-  margin:auto;
-}
-
-.btn{
-  border:0;
-  border-radius:13px;
-  padding:12px 16px;
-  color:#fff;
-  font-weight:900;
-}
-
-.primary{
-  background:linear-gradient(135deg,var(--green),var(--green2));
-}
-
-.ghost{
-  background:#12241a;
-  border:1px solid var(--line);
-}
-
-.small{
-  padding:9px 12px;
-  font-size:10px;
-}
-
-.top{
-  position:sticky;
-  top:0;
-  z-index:20;
-  background:#09150e;
-  border-bottom:1px solid var(--line);
-}
-
-.nav{
-  min-height:70px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:11px;
-}
-
-.logo{
-  width:43px;
-  height:43px;
-  border-radius:13px;
-  display:grid;
-  place-items:center;
-  background:linear-gradient(145deg,#19bc78,#08714b);
-  font-size:21px;
-  font-weight:900;
-}
-
-.brand h1{
-  margin:0;
-  font-size:14px;
-}
-
-.brand p{
-  margin:5px 0 0;
-  color:var(--muted);
-  font-size:10px;
-}
-
-.hero{
-  padding:50px 0 30px;
-}
-
-.hero-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:25px;
-  align-items:center;
-}
-
-.kicker{
-  color:#81dcae;
-  font-size:10px;
-  font-weight:900;
-}
-
-.hero h2{
-  font-size:clamp(40px,6vw,68px);
-  line-height:1.08;
-  margin:12px 0 16px;
-}
-
-.hero h2 span{
-  color:#61d59a;
-}
-
-.hero-text{
-  color:var(--muted);
-  font-size:15px;
-  line-height:2;
-  max-width:620px;
-}
-
-.hero-buttons{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:24px;
-}
-
-.features{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin-top:20px;
-}
-
-.feature{
-  padding:15px;
-  border:1px solid var(--line);
-  background:var(--panel);
-  border-radius:16px;
-}
-
-.feature strong{
-  display:block;
-  font-size:12px;
-  margin-bottom:7px;
-}
-
-.feature span{
-  color:var(--muted);
-  font-size:10px;
-  line-height:1.8;
-}
-
-.quran-card{
-  min-height:390px;
-  border:1px solid var(--line);
-  border-radius:25px;
-  background:
-    radial-gradient(circle at 50% 35%,rgba(216,180,106,.08),transparent 30%),
-    #0c1b12;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  overflow:hidden;
-}
-
-.quran-circle{
-  width:205px;
-  height:205px;
-  border-radius:50%;
-  border:2px solid rgba(216,180,106,.45);
-  display:grid;
-  place-items:center;
-  background:
-    radial-gradient(circle,#183a28,#0a1710);
-  box-shadow:
-    0 0 0 12px rgba(216,180,106,.03),
-    0 0 70px rgba(24,185,120,.10);
-}
-
-.quran-icon{
-  font-size:72px;
-}
-
-.quran-caption{
-  position:absolute;
-  bottom:22px;
-  right:22px;
-  left:22px;
-  text-align:center;
-}
-
-.quran-caption h3{
-  margin:0 0 7px;
-  font-size:20px;
-}
-
-.quran-caption p{
-  margin:0;
-  color:#9fb0a5;
-  font-size:10px;
-}
-
-.section{
-  padding:20px 0;
-}
-
-.panel{
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:20px;
-  padding:18px;
-}
-
-.section-head{
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:14px;
-}
-
-.section-head h3{
-  margin:7px 0 0;
-  font-size:21px;
-}
-
-.student-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-
-.field label,
-.field-label{
-  display:block;
-  color:#91a69a;
-  font-size:10px;
-  margin-bottom:7px;
-}
-
-.input{
-  width:100%;
-  height:49px;
-  border:1px solid var(--line);
-  border-radius:13px;
-  background:#0b1a11;
-  color:#fff;
-  outline:none;
-  padding:0 14px;
-}
-
-.input:focus{
-  border-color:rgba(24,185,120,.55);
-}
-
-.row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  margin-top:13px;
-}
-
-.note{
-  color:#7f9488;
-  font-size:10px;
-}
-
-.dashboard{
-  padding:18px 0 45px;
-}
-
-.hello{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  margin-bottom:14px;
-}
-
-.hello h3{
-  margin:7px 0;
-  font-size:24px;
-}
-
-.hello p{
-  margin:0;
-  color:var(--muted);
-  font-size:11px;
-}
-
-.hello-right{
-  display:flex;
-  gap:8px;
-  align-items:center;
-  flex-wrap:wrap;
-}
-
-.class-chip{
-  padding:9px 12px;
-  border-radius:999px;
-  color:#e2c58f;
-  background:#19160f;
-  border:1px solid rgba(216,180,106,.22);
-  font-size:10px;
-}
-
-.audio-layout{
-  display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:15px;
-}
-
-.audio-list{
-  display:grid;
-  gap:9px;
-}
-
-.audio-item{
-  display:grid;
-  grid-template-columns:auto 1fr auto;
-  gap:12px;
-  align-items:center;
-  padding:12px;
-  border:1px solid var(--line);
-  border-radius:15px;
-  background:#0d2016;
-}
-
-.audio-icon{
-  width:48px;
-  height:48px;
-  border-radius:14px;
-  display:grid;
-  place-items:center;
-  background:#143925;
-  font-size:20px;
-}
-
-.audio-title{
-  font-size:13px;
-  font-weight:900;
-}
-
-.audio-meta{
-  margin-top:5px;
-  color:#7f9488;
-  font-size:9px;
-}
-
-.progress-mini{
-  margin-top:8px;
-  height:5px;
-  border-radius:99px;
-  background:#1b2b21;
-  overflow:hidden;
-}
-
-.progress-mini span{
-  display:block;
-  height:100%;
-  background:linear-gradient(90deg,#18b978,#8bdaa3);
-}
-
-.play{
-  width:43px;
-  height:43px;
-  border:0;
-  border-radius:13px;
-  background:linear-gradient(145deg,#19b978,#08754c);
-  color:#fff;
-}
-
-.empty{
-  min-height:110px;
-  border:1px dashed var(--line);
-  border-radius:16px;
-  display:grid;
-  place-items:center;
-  color:#7a9084;
-  font-size:11px;
-}
-
-.player{
-  position:sticky;
-  top:88px;
-}
-
-.cover{
-  height:190px;
-  border-radius:17px;
-  background:
-    radial-gradient(circle at 50% 35%,rgba(216,180,106,.12),transparent 28%),
-    #0b1810;
-  display:grid;
-  place-items:center;
-  position:relative;
-  overflow:hidden;
-}
-
-.cover-quran{
-  font-size:65px;
-}
-
-.cover-info{
-  position:absolute;
-  right:15px;
-  left:15px;
-  bottom:14px;
-}
-
-.cover-info b{
-  font-size:15px;
-}
-
-.cover-info small{
-  display:block;
-  margin-top:5px;
-  color:#a0b0a6;
-  font-size:9px;
-}
-
-.times{
-  display:flex;
-  justify-content:space-between;
-  color:#81968a;
-  font-size:9px;
-  margin-top:13px;
-}
-
-.range{
-  width:100%;
-  accent-color:#19b978;
-}
-
-.controls{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-top:12px;
-}
-
-.control{
-  width:44px;
-  height:44px;
-  border-radius:13px;
-  border:1px solid var(--line);
-  background:#11251a;
-  color:#dce8e0;
-}
-
-.main-play{
-  width:54px;
-  height:54px;
-  border:0;
-  border-radius:17px;
-  background:linear-gradient(145deg,#18ba77,#08754b);
-  color:#fff;
-}
-
-.teacher-panel{
-  padding:20px 0 50px;
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-}
-
-.stat{
-  padding:15px;
-  background:#0d2016;
-  border:1px solid var(--line);
-  border-radius:15px;
-}
-
-.stat span{
-  display:block;
-  font-size:9px;
-  color:#83978d;
-  margin-bottom:7px;
-}
-
-.stat b{
-  font-size:22px;
-}
-
-.teacher-message{
-  margin-top:13px;
-  min-height:18px;
-  font-size:10px;
-  color:#8aa096;
-}
-
-.teacher-section{
-  margin-top:15px;
-}
-
-.upload-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-
-.upload-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  margin-top:14px;
-}
-
-.upload-progress{
-  margin-top:14px;
-}
-
-.upload-top{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:7px;
-  font-size:10px;
-  color:#81968a;
-}
-
-.upload-track{
-  height:7px;
-  border-radius:99px;
-  background:#1b2b21;
-  overflow:hidden;
-}
-
-.upload-track span{
-  display:block;
-  height:100%;
-  width:0;
-  background:linear-gradient(90deg,#18b978,#85dba0);
-}
-
-.teacher-list{
-  display:grid;
-  gap:9px;
-}
-
-.teacher-item{
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:10px;
-  align-items:center;
-  padding:13px;
-  background:#0d2016;
-  border:1px solid var(--line);
-  border-radius:15px;
-}
-
-.teacher-title{
-  font-size:12px;
-  font-weight:900;
-}
-
-.teacher-meta{
-  font-size:9px;
-  color:#80968a;
-  margin-top:5px;
-}
-
-.teacher-actions{
-  display:flex;
-  gap:7px;
-  flex-wrap:wrap;
-}
-
-.modal{
-  position:fixed;
-  inset:0;
-  z-index:100;
-  display:grid;
-  place-items:center;
-  padding:16px;
-}
-
-.modal-back{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.67);
-}
-
-.modal-card{
-  position:relative;
-  z-index:1;
-  width:min(420px,100%);
-  padding:24px;
-  border-radius:23px;
-  background:#10251a;
-  border:1px solid var(--line);
-}
-
-.close{
-  position:absolute;
-  left:10px;
-  top:10px;
-  width:34px;
-  height:34px;
-  border:1px solid var(--line);
-  border-radius:10px;
-  background:#15291f;
-  color:#b8c5bd;
-}
-
-.modal-card h3{
-  margin:7px 0;
-  font-size:24px;
-}
-
-.modal-card p{
-  color:#8da197;
-  font-size:11px;
-  line-height:1.9;
-}
-
-.error{
-  min-height:16px;
-  color:#ed929d;
-  font-size:10px;
-  margin-top:8px;
-}
-
-footer{
-  padding:20px 0 28px;
-  text-align:center;
-  color:#788d82;
-  font-size:10px;
-}
-
-.credit{
-  margin-top:6px;
-}
+:root{--bg:#07140d;--bg2:#0b2116;--panel:#102319;--panel2:#132b1e;--line:rgba(255,255,255,.08);--text:#f5f8f5;--muted:#9aafa3;--green:#18b978;--green2:#08764c;--gold:#d8b36a;--danger:#e16b79}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;font-family:Tahoma,Arial,sans-serif;color:var(--text);background:linear-gradient(145deg,var(--bg),var(--bg2));overflow-x:hidden}button,input{font:inherit}button{cursor:pointer}.hidden{display:none!important}.wrap{width:min(1160px,calc(100% - 24px));margin:auto}.btn{border:0;border-radius:13px;padding:12px 16px;color:#fff;font-weight:800}.primary{background:linear-gradient(135deg,var(--green),var(--green2))}.ghost{background:#112219;border:1px solid var(--line)}.small{padding:9px 12px;font-size:10px}
+.top{position:sticky;top:0;z-index:20;background:#09150f;border-bottom:1px solid var(--line)}.nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{display:flex;align-items:center;gap:11px}.badge{width:43px;height:43px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(145deg,#18bd78,#08704a);font-weight:900;font-size:18px}.brand h1{font-size:14px;margin:0}.brand p{font-size:10px;color:var(--muted);margin:5px 0 0}
+.hero{padding:46px 0 28px}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center}.eyebrow,.kicker{font-size:10px;color:#82dcae;font-weight:900}.hero h2{font-size:clamp(40px,6vw,68px);line-height:1.08;margin:12px 0 16px;letter-spacing:-1.5px}.hero h2 span{color:#63d79c}.hero-text{max-width:650px;color:var(--muted);font-size:15px;line-height:2}.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:23px}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}.feature{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:15px}.feature strong{display:block;font-size:12px;margin-bottom:6px}.feature span{color:var(--muted);font-size:10px;line-height:1.8}
+.quran-card{height:370px;border:1px solid var(--line);border-radius:26px;background:radial-gradient(circle at 50% 25%,rgba(24,185,120,.18),transparent 32%),linear-gradient(160deg,#122b1e,#08140d);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}.quran-ring{width:190px;height:190px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(216,179,106,.35);box-shadow:0 0 0 16px rgba(216,179,106,.03),0 0 70px rgba(24,185,120,.10)}.quran-symbol{font-size:82px;color:#e5cb91;font-weight:900}.quran-card:after{content:"سامانه صوت قرآن";position:absolute;bottom:24px;right:24px;left:24px;text-align:center;color:#c6d1ca;font-size:12px}
+.section{padding:20px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:14px}.section-head h3{margin:7px 0 0;font-size:21px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:18px}.student-grid,.upload-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field label,.field-label{display:block;color:#91a89a;font-size:10px;margin-bottom:7px}.input{width:100%;height:49px;background:#0b1b12;border:1px solid var(--line);border-radius:13px;color:white;padding:0 14px;outline:none}.input:focus{border-color:rgba(24,185,120,.55)}.save-row,.upload-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:13px}.note{color:#7f9488;font-size:10px}
+.dashboard{padding:18px 0 45px}.hello{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:14px}.hello h3{font-size:24px;margin:7px 0}.hello p{font-size:11px;color:var(--muted);margin:0}.hello-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.class-chip{padding:9px 12px;border-radius:999px;border:1px solid rgba(216,179,106,.22);color:#e1c894;background:#1a180f;font-size:11px}.audio-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:15px}.audio-list,.teacher-list{display:grid;gap:9px}.audio-item{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:16px;background:#0e2117}.audio-icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:#153a28;color:#d9b56f;font-size:21px}.audio-title{font-size:13px;font-weight:900}.audio-meta{color:#7e9588;font-size:9px;margin-top:5px}.mini-progress{height:5px;background:#1a2a20;border-radius:99px;overflow:hidden;margin-top:8px}.mini-progress span{display:block;height:100%;background:linear-gradient(90deg,#18b978,#85d99e)}.play{width:43px;height:43px;border:0;border-radius:13px;color:white;background:linear-gradient(145deg,#18b978,#08744b)}.empty{min-height:105px;border:1px dashed var(--line);border-radius:16px;display:grid;place-items:center;color:#788f83;font-size:11px}
+.player{position:sticky;top:88px}.cover{height:170px;border-radius:17px;background:radial-gradient(circle at center,rgba(24,185,120,.15),transparent 45%),#0b1a11;display:grid;place-items:center;position:relative;overflow:hidden;border:1px solid var(--line)}.cover-symbol{font-size:76px;color:#e4c98f}.now{position:absolute;right:14px;left:14px;bottom:12px;background:linear-gradient(transparent,rgba(5,14,9,.92));padding-top:28px}.now b{font-size:15px}.now small{display:block;color:#a2b2a8;margin-top:5px;font-size:10px}.times{display:flex;justify-content:space-between;color:#7e9387;font-size:9px;margin-top:13px}.range{width:100%;accent-color:#19b978}.controls{display:flex;justify-content:center;gap:10px;margin-top:12px}.ctl{width:44px;height:44px;border:1px solid var(--line);background:#102319;color:#dce8e0;border-radius:13px}.main-play{width:54px;height:54px;border:0;border-radius:17px;background:linear-gradient(145deg,#18ba77,#08754c);color:white}
+.teacher-panel{padding:20px 0 45px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat{padding:15px;border:1px solid var(--line);border-radius:15px;background:#0e2117}.stat span{display:block;color:#85988d;font-size:9px;margin-bottom:7px}.stat b{font-size:22px}.teacher-msg{min-height:18px;margin-top:13px;color:#8aa096;font-size:10px}.teacher-section{margin-top:15px}.teacher-tag{color:#8eaa9b;border:1px solid var(--line);border-radius:999px;padding:7px 10px;font-size:9px}.teacher-item{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:13px;background:#0e2117;border:1px solid var(--line);border-radius:15px}.teacher-title{font-size:12px;font-weight:900}.teacher-meta{font-size:9px;color:#81958a;margin-top:5px}.teacher-actions{display:flex;gap:7px;flex-wrap:wrap}
+.upload-progress{margin-top:13px}.upload-top{display:flex;justify-content:space-between;color:#85998f;font-size:10px;margin-bottom:7px}.upload-track{height:7px;background:#1a2a20;border-radius:99px;overflow:hidden}.upload-track span{display:block;width:0;height:100%;background:linear-gradient(90deg,#18b978,#80dca0)}
+.modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:16px}.modal-back{position:absolute;inset:0;background:rgba(0,0,0,.66)}.modal-card{position:relative;width:min(420px,100%);padding:24px;border-radius:23px;background:#102319;border:1px solid var(--line);z-index:1}.close{position:absolute;left:10px;top:10px;width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:#14281e;color:#b6c6bc}.modal-card h3{font-size:24px;margin:7px 0}.modal-card p{color:#8b9f94;font-size:11px;line-height:1.9}.error{min-height:15px;color:#ef949f;font-size:10px;margin-top:8px}footer{padding:18px 0 28px;text-align:center;color:#788e82;font-size:10px}.credit{margin-top:6px;color:#82988c}
 
 @media(max-width:920px){
-  .hero-grid,
-  .audio-layout,
-  .student-grid,
-  .upload-grid{
-    grid-template-columns:1fr;
-  }
-
-  .features{
-    grid-template-columns:1fr;
-  }
-
-  .player{
-    position:static;
-  }
-
-  .stats{
-    grid-template-columns:1fr 1fr;
-  }
+.hero-grid,.audio-wrap,.student-grid,.upload-grid{grid-template-columns:1fr}
+.features{grid-template-columns:1fr}
+.player{position:static}
+.stats{grid-template-columns:1fr 1fr}
 }
 
 @media(max-width:620px){
-  .wrap{
-    width:min(100% - 16px,1180px);
-  }
-
-  .hero{
-    padding-top:28px;
-  }
-
-  .hero h2{
-    font-size:41px;
-  }
-
-  .hero-buttons .btn{
-    width:100%;
-  }
-
-  .hello{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-
-  .audio-item{
-    grid-template-columns:auto 1fr;
-  }
-
-  .audio-item .play{
-    grid-column:1/-1;
-    width:100%;
-  }
-
-  .row,
-  .upload-row{
-    flex-direction:column;
-    align-items:stretch;
-  }
-
-  .row .btn,
-  .upload-row .btn{
-    width:100%;
-  }
-
-  .teacher-item{
-    grid-template-columns:1fr;
-  }
-
-  .stats{
-    grid-template-columns:1fr 1fr;
-  }
+.wrap{width:min(100% - 16px,1160px)}
+.hero{padding-top:28px}
+.hero h2{font-size:41px}
+.quran-card{height:300px}
+.hero-actions .btn{width:100%}
+.hello{flex-direction:column;align-items:flex-start}
+.audio-item{grid-template-columns:auto 1fr}
+.audio-item .play{grid-column:1/-1;width:100%}
+.save-row,.upload-row{flex-direction:column;align-items:stretch}
+.save-row .btn,.upload-row .btn{width:100%}
+.teacher-item{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -751,1229 +44,1144 @@ footer{
 <body>
 
 <header class="top">
-  <div class="wrap nav">
+<div class="wrap nav">
+<div class="brand">
+<div class="badge">ش</div>
+<div>
+<h1>دبیرستان شاهد</h1>
+<p>سامانه صوت قرآن شاهد</p>
+</div>
+</div>
 
-    <div class="brand">
-      <div class="logo">ق</div>
+<button
+class="btn ghost small"
+type="button"
+onclick="document.getElementById('teacherModal').classList.remove('hidden');document.getElementById('teacherCode').focus();"
+>
+پنل معلم
+</button>
 
-      <div>
-        <h1>دبیرستان شاهد</h1>
-        <p>سامانه صوت قرآن</p>
-      </div>
-    </div>
-
-    <button
-      class="btn ghost small"
-      type="button"
-      onclick="
-        document.getElementById('teacherModal').classList.remove('hidden');
-        setTimeout(()=>document.getElementById('teacherCode').focus(),100);
-      "
-    >
-      پنل معلم
-    </button>
-
-  </div>
+</div>
 </header>
-
 
 <main>
 
-<!-- HOME -->
-
 <section class="hero" id="homePage">
+<div class="wrap hero-grid">
 
-  <div class="wrap hero-grid">
+<div>
 
-    <div>
+<div class="eyebrow">
+قرآن • صوت • یادگیری
+</div>
 
-      <div class="kicker">
-        قرآن • آموزش • مدرسه
-      </div>
+<h2>
+سامانه <span>صوت قرآن</span>
+</h2>
 
-      <h2>
-        سامانه صوت
-        <br>
-        <span>قرآن</span>
-      </h2>
+<p class="hero-text">
+فایل‌های صوت قرآن مدرسه را گوش بده، ادامه پخش را نگه دار و هر وقت برگشتی از همان نقطه ادامه بده.
+</p>
 
-      <p class="hero-text">
-        فایل‌های صوت قرآن مدرسه را گوش بده،
-        پیشرفت خودت را ذخیره کن و هر بار از همان قسمت ادامه بده.
-      </p>
+<div class="hero-actions">
 
-      <div class="hero-buttons">
+<button
+class="btn primary"
+id="studentBtn"
+>
+🎧 ورود دانش‌آموز
+</button>
 
-        <button
-          class="btn primary"
-          id="studentButton"
-        >
-          📖 ورود دانش‌آموز
-        </button>
+<button
+class="btn ghost"
+id="aboutBtn"
+>
+📖 درباره سامانه
+</button>
 
-        <button
-          class="btn ghost"
-          id="aboutButton"
-        >
-          ℹ️ درباره سامانه
-        </button>
+</div>
 
-      </div>
+<div class="features">
 
-      <div class="features">
+<div class="feature">
+<strong>🎧 پخش صوت</strong>
+<span>فایل‌های صوت قرآن را آنلاین گوش بده.</span>
+</div>
 
-        <div class="feature">
-          <strong>📖 صوت قرآن</strong>
-          <span>
-            فایل‌های صوتی قرآن مدرسه را آنلاین گوش بده.
-          </span>
-        </div>
+<div class="feature">
+<strong>💾 ورود یک‌باره</strong>
+<span>نام و کلاس روی همین دستگاه ذخیره می‌شود.</span>
+</div>
 
-        <div class="feature">
-          <strong>💾 ورود یک‌باره</strong>
-          <span>
-            نام و کلاس روی همین دستگاه ذخیره می‌شود.
-          </span>
-        </div>
+<div class="feature">
+<strong>📈 پیشرفت</strong>
+<span>میزان گوش‌دادن هر فایل ذخیره می‌شود.</span>
+</div>
 
-        <div class="feature">
-          <strong>📈 پیشرفت</strong>
-          <span>
-            میزان گوش‌دادن هر فایل ثبت می‌شود.
-          </span>
-        </div>
+</div>
 
-      </div>
+</div>
 
-    </div>
+<div class="quran-card">
+<div class="quran-ring">
+<div class="quran-symbol">ق</div>
+</div>
+</div>
 
-
-    <div class="quran-card">
-
-      <div class="quran-circle">
-        <div class="quran-icon">📖</div>
-      </div>
-
-      <div class="quran-caption">
-
-        <h3>
-          سامانه صوت قرآن
-        </h3>
-
-        <p>
-          دبیرستان شاهد
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
+</div>
 </section>
 
 
-<!-- STUDENT LOGIN -->
-
 <section
-  class="section"
-  id="studentLogin"
+class="section"
+id="studentLogin"
 >
 
-  <div class="wrap">
+<div class="wrap">
 
-    <div class="section-head">
+<div class="section-head">
 
-      <div>
-        <div class="kicker">ورود سریع</div>
+<div>
 
-        <h3>
-          مشخصات دانش‌آموز
-        </h3>
-      </div>
+<div class="kicker">
+ورود سریع
+</div>
 
-    </div>
+<h3>
+مشخصات دانش‌آموز
+</h3>
 
+</div>
 
-    <div class="panel">
+</div>
 
-      <div class="student-grid">
+<div class="panel">
 
-        <div class="field">
+<div class="student-grid">
 
-          <label>
-            نام و نام خانوادگی
-          </label>
+<div class="field">
 
-          <input
-            class="input"
-            id="studentName"
-            maxlength="60"
-            placeholder="مثلاً پارسا شیشه‌گر"
-          >
+<label>
+نام و نام خانوادگی
+</label>
 
-        </div>
+<input
+class="input"
+id="studentName"
+maxlength="60"
+placeholder="مثلاً علی علی زاده"
+>
 
+</div>
 
-        <div class="field">
+<div class="field">
 
-          <label>
-            شماره کلاس
-          </label>
+<label>
+شماره کلاس
+</label>
 
-          <input
-            class="input"
-            id="studentClass"
-            maxlength="10"
-            inputmode="numeric"
-            placeholder="مثلاً ۸۰۲"
-          >
+<input
+class="input"
+id="studentClass"
+maxlength="10"
+inputmode="numeric"
+placeholder="مثلاً ۸۰۲"
+>
 
-        </div>
+</div>
 
-      </div>
+</div>
 
+<div class="save-row">
 
-      <div class="row">
+<span
+class="note"
+id="studentNote"
+>
+بعد از ورود، دفعه بعد فرم دوباره نمی‌آید.
+</span>
 
-        <span
-          class="note"
-          id="studentNote"
-        >
-          دفعه بعد ورود دوباره لازم نیست.
-        </span>
+<button
+class="btn primary"
+id="studentSave"
+>
+ذخیره و ورود
+</button>
 
-        <button
-          class="btn primary"
-          id="studentSave"
-        >
-          ذخیره و ورود
-        </button>
+</div>
 
-      </div>
-
-    </div>
-
-  </div>
-
+</div>
+</div>
 </section>
 
 
-<!-- STUDENT -->
-
 <section
-  class="dashboard hidden"
-  id="studentPanel"
+class="dashboard hidden"
+id="studentPanel"
 >
 
-  <div class="wrap">
+<div class="wrap">
 
-    <div class="hello">
+<div class="hello">
 
-      <div>
+<div>
 
-        <div class="kicker">
-          داشبورد دانش‌آموز
-        </div>
+<div class="kicker">
+داشبورد دانش‌آموز
+</div>
 
-        <h3>
-          سلام
-          <span id="helloName">
-            دوست من
-          </span>
-          👋
-        </h3>
+<h3>
+سلام
+<span id="helloName">
+دوست من
+</span>
+👋
+</h3>
 
-        <p>
-          فایل‌های صوت قرآن اینجا نمایش داده می‌شوند.
-        </p>
+<p>
+فایل‌های صوت قرآن اینجا نمایش داده می‌شوند.
+</p>
 
-      </div>
+</div>
 
+<div class="hello-right">
 
-      <div class="hello-right">
+<div class="class-chip">
+کلاس
+<span id="helloClass">—</span>
+</div>
 
-        <div class="class-chip">
-          کلاس
-          <span id="helloClass">—</span>
-        </div>
+<button
+class="btn ghost small"
+id="logoutStudent"
+>
+خروج
+</button>
 
-        <button
-          class="btn ghost small"
-          id="studentLogout"
-        >
-          خروج
-        </button>
+</div>
 
-      </div>
-
-    </div>
-
-
-    <div class="audio-layout">
-
-      <div class="panel">
-
-        <div class="section-head">
-
-          <div>
-
-            <div class="kicker">
-              کتابخانه
-            </div>
-
-            <h3>
-              صوت‌های قرآن
-            </h3>
-
-          </div>
-
-          <button
-            class="btn ghost small"
-            id="refreshStudent"
-          >
-            ↻ بروزرسانی
-          </button>
-
-        </div>
+</div>
 
 
-        <div
-          id="audioList"
-          class="audio-list"
-        >
+<div class="audio-wrap">
 
-          <div class="empty">
-            در حال دریافت فایل‌ها...
-          </div>
+<div class="panel">
 
-        </div>
+<div class="section-head">
 
-      </div>
+<div>
 
+<div class="kicker">
+کتابخانه
+</div>
 
-      <div class="panel player">
+<h3>
+فایل‌های صوت قرآن
+</h3>
 
-        <div class="cover">
+</div>
 
-          <div class="quran-circle">
-            <div class="quran-icon">📖</div>
-          </div>
+<button
+class="btn ghost small"
+id="refresh"
+>
+↻ بروزرسانی
+</button>
 
-          <div class="cover-info">
-
-            <b id="nowTitle">
-              آماده برای پخش
-            </b>
-
-            <small id="nowMeta">
-              یک فایل صوتی انتخاب کن
-            </small>
-
-          </div>
-
-        </div>
+</div>
 
 
-        <audio
-          id="audio"
-          preload="metadata"
-        ></audio>
-
-
-        <div class="times">
-
-          <span id="currentTime">
-            00:00
-          </span>
-
-          <span id="durationTime">
-            00:00
-          </span>
-
-        </div>
-
-
-        <input
-          class="range"
-          id="seek"
-          type="range"
-          min="0"
-          max="100"
-          value="0"
-        >
-
-
-        <div class="controls">
-
-          <button
-            class="control"
-            id="back"
-          >
-            ↶ ۱۰
-          </button>
-
-          <button
-            class="main-play"
-            id="play"
-          >
-            ▶
-          </button>
-
-          <button
-            class="control"
-            id="forward"
-          >
-            ↷ ۱۰
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- TEACHER -->
-
-<section
-  class="teacher-panel hidden"
-  id="teacherPanel"
+<div
+id="audioList"
+class="audio-list"
 >
 
-  <div class="wrap">
+<div class="empty">
+در حال دریافت فایل‌ها...
+</div>
 
+</div>
 
-    <!-- STATS -->
+</div>
 
-    <div class="panel">
 
-      <div class="section-head">
+<div class="panel player">
 
-        <div>
+<div class="cover">
 
-          <div class="kicker">
-            پنل معلم
-          </div>
+<div class="cover-symbol">
+ق
+</div>
 
-          <h3>
-            مدیریت سامانه
-          </h3>
+<div class="now">
 
-        </div>
+<b id="nowTitle">
+آماده برای پخش
+</b>
 
+<small id="nowMeta">
+یک فایل صوتی انتخاب کن
+</small>
 
-        <div>
+</div>
 
-          <button
-            class="btn ghost small"
-            id="refreshTeacher"
-          >
-            ↻ بروزرسانی
-          </button>
+</div>
 
-          <button
-            class="btn ghost small"
-            id="logoutTeacher"
-          >
-            خروج
-          </button>
+<audio
+id="audio"
+preload="metadata"
+></audio>
 
-        </div>
+<div class="times">
+<span id="cur">00:00</span>
+<span id="dur">00:00</span>
+</div>
 
-      </div>
+<input
+class="range"
+id="seek"
+type="range"
+min="0"
+max="100"
+value="0"
+>
 
+<div class="controls">
 
-      <div class="stats">
+<button
+class="ctl"
+id="back"
+>
+↶ ۱۰
+</button>
 
-        <div class="stat">
-          <span>دانش‌آموزها</span>
-          <b id="tStudents">—</b>
-        </div>
+<button
+class="main-play"
+id="play"
+>
+▶
+</button>
 
-        <div class="stat">
-          <span>فایل‌ها</span>
-          <b id="tAudios">—</b>
-        </div>
+<button
+class="ctl"
+id="forward"
+>
+↷ ۱۰
+</button>
 
-        <div class="stat">
-          <span>رکوردهای گوش‌دادن</span>
-          <b id="tProgress">—</b>
-        </div>
+</div>
 
-        <div class="stat">
-          <span>میانگین پیشرفت</span>
-          <b id="tAverage">—</b>
-        </div>
+</div>
 
-      </div>
+</div>
 
-
-      <div
-        class="teacher-message"
-        id="teacherMessage"
-      >
-        پنل آماده است.
-      </div>
-
-    </div>
-
-
-    <!-- UPLOAD -->
-
-    <div class="panel teacher-section">
-
-      <div class="section-head">
-
-        <div>
-
-          <div class="kicker">
-            انتشار صوت قرآن
-          </div>
-
-          <h3>
-            آپلود فایل صوتی
-          </h3>
-
-        </div>
-
-      </div>
-
-
-      <div class="upload-grid">
-
-        <div class="field">
-
-          <label class="field-label">
-            عنوان صوت
-          </label>
-
-          <input
-            class="input"
-            id="uploadTitle"
-            maxlength="100"
-            placeholder="مثلاً سوره حمد"
-          >
-
-        </div>
-
-
-        <div class="field">
-
-          <label class="field-label">
-            انتخاب فایل صوتی
-          </label>
-
-          <input
-            class="input"
-            id="uploadFile"
-            type="file"
-            accept="audio/*"
-          >
-
-        </div>
-
-      </div>
-
-
-      <div class="upload-row">
-
-        <span
-          class="note"
-          id="uploadFileName"
-        >
-          هنوز فایلی انتخاب نشده
-        </span>
-
-        <button
-          class="btn primary"
-          id="uploadButton"
-        >
-          📤 آپلود فایل صوتی
-        </button>
-
-      </div>
-
-
-      <div
-        class="upload-progress hidden"
-        id="uploadProgress"
-      >
-
-        <div class="upload-top">
-
-          <span>
-            در حال آپلود...
-          </span>
-
-          <span id="uploadPercent">
-            ۰٪
-          </span>
-
-        </div>
-
-        <div class="upload-track">
-
-          <span
-            id="uploadBar"
-          ></span>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- FILE LIST -->
-
-    <div class="panel teacher-section">
-
-      <div class="section-head">
-
-        <div>
-
-          <div class="kicker">
-            فایل‌های صوتی
-          </div>
-
-          <h3>
-            فایل‌های منتشرشده
-          </h3>
-
-        </div>
-
-      </div>
-
-
-      <div
-        id="teacherList"
-        class="teacher-list"
-      >
-
-        <div class="empty">
-          هنوز فایلی منتشر نشده است.
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 </main>
 
 
-<footer>
-
-  <div>
-    سامانه صوت قرآن دبیرستان شاهد
-  </div>
-
-  <div class="credit">
-    ساخته شده توسط پارسا شیشه گر 802
-  </div>
-
-</footer>
-
-
-<!-- ABOUT -->
-
-<div
-  class="modal hidden"
-  id="aboutModal"
+<section
+class="teacher-panel hidden"
+id="teacherPanel"
 >
 
-  <div
-    class="modal-back"
-    data-close="aboutModal"
-  ></div>
+<div class="wrap">
 
-  <div class="modal-card">
+<div class="panel">
 
-    <button
-      class="close"
-      data-close="aboutModal"
-    >
-      ×
-    </button>
+<div class="section-head">
 
-    <div class="kicker">
-      درباره سامانه
-    </div>
+<div>
 
-    <h3>
-      سامانه صوت قرآن
-    </h3>
+<div class="kicker">
+پنل مدیریت
+</div>
 
-    <p>
-      این سامانه برای پخش و مدیریت فایل‌های صوت قرآن مدرسه طراحی شده است.
-    </p>
+<h3>
+مدیریت سامانه صوت قرآن شاهد
+</h3>
 
-    <button
-      class="btn primary"
-      data-close="aboutModal"
-    >
-      باشه
-    </button>
+</div>
 
-  </div>
+<div>
+
+<button
+class="btn ghost small"
+id="refreshTeacher"
+>
+↻ بروزرسانی
+</button>
+
+<button
+class="btn ghost small"
+id="logoutTeacher"
+>
+خروج
+</button>
+
+</div>
 
 </div>
 
 
-<!-- TEACHER LOGIN -->
+<div class="stats">
+
+<div class="stat">
+<span>دانش‌آموزها</span>
+<b id="tStudents">—</b>
+</div>
+
+<div class="stat">
+<span>فایل‌ها</span>
+<b id="tAudios">—</b>
+</div>
+
+<div class="stat">
+<span>رکوردهای گوش‌دادن</span>
+<b id="tProgress">—</b>
+</div>
+
+<div class="stat">
+<span>میانگین پیشرفت</span>
+<b id="tAverage">—</b>
+</div>
+
+</div>
+
 
 <div
-  class="modal hidden"
-  id="teacherModal"
+class="teacher-msg"
+id="teacherMessage"
+>
+پنل آماده است.
+</div>
+
+</div>
+
+
+<div class="panel teacher-section">
+
+<div class="section-head">
+
+<div>
+
+<div class="kicker">
+انتشار محتوا
+</div>
+
+<h3>
+آپلود صوت قرآن
+</h3>
+
+</div>
+
+<span class="teacher-tag">
+حداکثر 50MB
+</span>
+
+</div>
+
+
+<div class="upload-grid">
+
+<div class="field">
+
+<label class="field-label">
+عنوان فایل
+</label>
+
+<input
+class="input"
+id="uploadTitle"
+maxlength="100"
+placeholder="مثلاً سوره حمد"
 >
 
-  <div
-    class="modal-back"
-    data-close="teacherModal"
-  ></div>
+</div>
 
-  <div class="modal-card">
 
-    <button
-      class="close"
-      data-close="teacherModal"
-    >
-      ×
-    </button>
+<div class="field">
 
-    <div class="kicker">
-      مدیریت
-    </div>
+<label class="field-label">
+فایل صوتی
+</label>
 
-    <h3>
-      ورود معلم
-    </h3>
+<input
+class="input"
+id="uploadFile"
+type="file"
+accept="audio/*"
+>
 
-    <p>
-      کد مدیریت را وارد کن.
-    </p>
+</div>
 
-    <input
-      class="input"
-      id="teacherCode"
-      type="password"
-      placeholder="کد مدیریت"
-    >
+</div>
 
-    <div
-      class="error"
-      id="teacherError"
-    ></div>
 
-    <button
-      class="btn primary"
-      id="teacherLogin"
-      style="width:100%;margin-top:12px"
-    >
-      ورود به پنل
-    </button>
+<div class="upload-row">
 
-  </div>
+<span
+class="note"
+id="uploadFileName"
+>
+فایلی انتخاب نشده
+</span>
+
+<button
+class="btn primary"
+id="uploadButton"
+>
+📤 آپلود و انتشار
+</button>
+
+</div>
+
+
+<div
+class="upload-progress hidden"
+id="uploadProgress"
+>
+
+<div class="upload-top">
+
+<span>
+در حال آپلود...
+</span>
+
+<span id="uploadPercent">
+۰٪
+</span>
+
+</div>
+
+<div class="upload-track">
+
+<span id="uploadBar"></span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="panel teacher-section">
+
+<div class="section-head">
+
+<div>
+
+<div class="kicker">
+فایل‌ها
+</div>
+
+<h3>
+صوت‌های منتشرشده
+</h3>
+
+</div>
+
+</div>
+
+
+<div
+id="teacherList"
+class="teacher-list"
+>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<div>
+سامانه صوت قرآن شاهد
+</div>
+
+<div class="credit">
+ساخته شده توسط پارسا شیشه گر 
+</div>
+
+</footer>
+
+
+<div
+class="modal hidden"
+id="aboutModal"
+>
+
+<div
+class="modal-back"
+data-close="aboutModal"
+></div>
+
+<div class="modal-card">
+
+<button
+class="close"
+data-close="aboutModal"
+>
+×
+</button>
+
+<div class="kicker">
+درباره سامانه
+</div>
+
+<h3>
+سامانه صوت قرآن شاهد 📖
+</h3>
+
+<p>
+این سامانه برای پخش فایل‌های صوت قرآن و ثبت میزان گوش‌دادن دانش‌آموزان طراحی شده است.
+</p>
+
+<button
+class="btn primary"
+data-close="aboutModal"
+>
+باشه
+</button>
+
+</div>
+
+</div>
+
+
+<div
+class="modal hidden"
+id="teacherModal"
+>
+
+<div
+class="modal-back"
+data-close="teacherModal"
+></div>
+
+<div class="modal-card">
+
+<button
+class="close"
+data-close="teacherModal"
+>
+×
+</button>
+
+<div class="kicker">
+مدیریت
+</div>
+
+<h3>
+ورود معلم
+</h3>
+
+<p>
+کد مدیریت را وارد کن.
+</p>
+
+<input
+class="input"
+id="teacherCode"
+type="password"
+placeholder="کد مدیریت"
+>
+
+<div
+class="error"
+id="teacherError"
+></div>
+
+<button
+class="btn primary"
+style="width:100%;margin-top:12px"
+id="teacherLogin"
+>
+ورود به پنل
+</button>
+
+</div>
 
 </div>
 
 
 <script>
+
 const API =
-  "https://sayad-voice-api.parsaparssss649.workers.dev";
+'https://sayad-voice-api.parsaparssss649.workers.dev';
 
 const $ =
-  id => document.getElementById(id);
+id =>
+document.getElementById(id);
 
 const fa =
-  n => String(n).replace(
-    /\d/g,
-    d => "۰۱۲۳۴۵۶۷۸۹"[d]
-  );
+n =>
+String(n).replace(
+  /\d/g,
+  d =>
+    '۰۱۲۳۴۵۶۷۸۹'[d]
+);
 
 const esc =
-  s => String(s ?? "").replace(
-    /[&<>"']/g,
-    c => ({
-      "&":"&amp;",
-      "<":"&lt;",
-      ">":"&gt;",
-      '"':"&quot;",
-      "'":"&#39;"
+s =>
+String(s ?? '').replace(
+  /[&<>"']/g,
+  c =>
+    ({
+      '&':'&amp;',
+      '<':'&lt;',
+      '>':'&gt;',
+      '"':'&quot;',
+      "'":'&#39;'
     }[c])
-  );
+);
 
-const timeText =
-  s => {
-    s =
-      Math.max(
-        0,
-        Math.floor(
-          Number(s) || 0
-        )
-      );
+const fmt =
+s => {
 
-    const m =
-      Math.floor(s / 60);
-
-    const x =
-      s % 60;
-
-    return (
-      String(m).padStart(2,"0") +
-      ":" +
-      String(x).padStart(2,"0")
+  s =
+    Math.max(
+      0,
+      Math.floor(
+        Number(s) || 0
+      )
     );
-  };
+
+  const m =
+    Math.floor(
+      s / 60
+    );
+
+  const x =
+    s % 60;
+
+  return `${String(m).padStart(2,'0')}:${String(x).padStart(2,'0')}`;
+
+};
 
 
 let audios = [];
 let progress = {};
-let currentAudio = null;
+let current = null;
 let saveTimer = null;
 
 
-/* API */
+function modal(
+  id,
+  open
+) {
 
-async function api(
-  path,
-  options = {}
-){
-
-  const headers =
-    new Headers(
-      options.headers || {}
+  $(id)
+    .classList
+    .toggle(
+      'hidden',
+      !open
     );
 
-  if(
-    options.body &&
-    !(options.body instanceof FormData)
-  ){
-
-    headers.set(
-      "Content-Type",
-      "application/json"
-    );
-
-  }
-
-  const response =
-    await fetch(
-      API + path,
-      {
-        ...options,
-        headers
-      }
-    );
-
-  const text =
-    await response.text();
-
-  let data = {};
-
-  try{
-
-    data =
-      text
-        ? JSON.parse(text)
-        : {};
-
-  }catch{
-
-    data = {
-      error:text
-    };
-
-  }
-
-  if(!response.ok){
-
-    throw new Error(
-      data.error ||
-      data.message ||
-      "HTTP " +
-      response.status
-    );
-
-  }
-
-  return data;
 }
 
 
-/* CLIENT */
+function showHome() {
 
-function clientId(){
+  $('homePage')
+    .classList
+    .remove('hidden');
+
+  $('studentLogin')
+    .classList
+    .remove('hidden');
+
+  $('studentPanel')
+    .classList
+    .add('hidden');
+
+  $('teacherPanel')
+    .classList
+    .add('hidden');
+
+}
+
+
+function showStudent() {
+
+  $('homePage')
+    .classList
+    .add('hidden');
+
+  $('studentLogin')
+    .classList
+    .add('hidden');
+
+  $('studentPanel')
+    .classList
+    .remove('hidden');
+
+  $('teacherPanel')
+    .classList
+    .add('hidden');
+
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
+
+}
+
+
+function showTeacher() {
+
+  $('homePage')
+    .classList
+    .add('hidden');
+
+  $('studentLogin')
+    .classList
+    .add('hidden');
+
+  $('studentPanel')
+    .classList
+    .add('hidden');
+
+  $('teacherPanel')
+    .classList
+    .remove('hidden');
+
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
+
+}
+
+
+function client() {
 
   let id =
     localStorage.getItem(
-      "quran_client_id"
+      'sayad_client_id'
     );
 
-  if(!id){
+  if (!id) {
 
     id =
       crypto.randomUUID
         ? crypto.randomUUID()
-        : (
-          "client_" +
+        :
+          'c_' +
           Date.now() +
-          "_" +
+          '_' +
           Math.random()
             .toString(36)
-            .slice(2)
-        );
+            .slice(2);
 
     localStorage.setItem(
-      "quran_client_id",
+      'sayad_client_id',
       id
     );
 
   }
 
   return id;
-}
-
-
-/* PAGES */
-
-function showHome(){
-
-  $("homePage")
-    .classList
-    .remove("hidden");
-
-  $("studentLogin")
-    .classList
-    .remove("hidden");
-
-  $("studentPanel")
-    .classList
-    .add("hidden");
-
-  $("teacherPanel")
-    .classList
-    .add("hidden");
 
 }
 
 
-function showStudent(){
+async function api(
+  path,
+  opt = {}
+) {
 
-  $("homePage")
-    .classList
-    .add("hidden");
+  const h =
+    new Headers(
+      opt.headers || {}
+    );
 
-  $("studentLogin")
-    .classList
-    .add("hidden");
+  if (
+    opt.body &&
+    !(opt.body instanceof FormData)
+  ) {
 
-  $("studentPanel")
-    .classList
-    .remove("hidden");
+    h.set(
+      'Content-Type',
+      'application/json'
+    );
 
-  $("teacherPanel")
-    .classList
-    .add("hidden");
+  }
 
-}
+  const r =
+    await fetch(
+      API + path,
+      {
+        ...opt,
+        headers:h
+      }
+    );
 
+  const t =
+    await r.text();
 
-function showTeacher(){
+  let d = {};
 
-  $("homePage")
-    .classList
-    .add("hidden");
+  try {
 
-  $("studentLogin")
-    .classList
-    .add("hidden");
+    d =
+      t
+        ? JSON.parse(t)
+        : {};
 
-  $("studentPanel")
-    .classList
-    .add("hidden");
+  } catch {
 
-  $("teacherPanel")
-    .classList
-    .remove("hidden");
+    d = {
+      error:t
+    };
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+  }
 
-}
+  if (!r.ok) {
 
+    throw new Error(
+      d.error ||
+      d.message ||
+      `HTTP ${r.status}`
+    );
 
-function openModal(
-  id
-){
+  }
 
-  $(id)
-    .classList
-    .remove("hidden");
-
-}
-
-
-function closeModal(
-  id
-){
-
-  $(id)
-    .classList
-    .add("hidden");
+  return d;
 
 }
 
 
-/* STUDENT */
-
-async function saveStudent(){
+async function loginStudent() {
 
   const name =
-    $("studentName")
+    $('studentName')
       .value
       .trim();
 
   const klass =
-    $("studentClass")
+    $('studentClass')
       .value
       .trim();
 
-  if(
+  if (
     !name ||
     !klass
-  ){
+  ) {
 
-    $("studentNote")
+    $('studentNote')
       .textContent =
-      "نام و کلاس را کامل وارد کن.";
+      'نام و کلاس را کامل وارد کن.';
 
     return;
+
   }
 
+
   localStorage.setItem(
-    "quran_name",
+    'sayad_name',
     name
   );
 
   localStorage.setItem(
-    "quran_class",
+    'sayad_class',
     klass
   );
 
   localStorage.setItem(
-    "quran_logged",
-    "1"
+    'sayad_logged',
+    '1'
   );
 
-  $("helloName")
+
+  $('helloName')
     .textContent =
     name;
 
-  $("helloClass")
+  $('helloClass')
     .textContent =
     fa(klass);
 
-  $("studentNote")
-    .textContent =
-    "ذخیره شد ✓";
 
-
-  try{
+  try {
 
     await api(
-      "/api/student",
+      '/api/student',
       {
-        method:"POST",
+        method:'POST',
 
-        body:JSON.stringify({
-          name:name,
-          client_id:clientId()
-        })
+        body:
+          JSON.stringify({
+            name,
+            client_id:
+              client()
+          })
       }
     );
 
-  }catch(error){
-
-    console.log(
-      "student register warning",
-      error
-    );
-
-  }
+  } catch {}
 
 
   showStudent();
 
-  loadStudentData();
+  loadStudent();
 
 }
 
 
-/* LOAD STUDENT */
+async function loadStudent() {
 
-async function loadStudentData(){
+  try {
 
-  try{
-
-    const audioResult =
+    const a =
       await api(
-        "/api/audios"
+        '/api/audios'
       );
 
     audios =
-      audioResult.audios || [];
+      a.audios || [];
 
 
-    try{
+    try {
 
-      const progressResult =
+      const p =
         await api(
-          "/api/progress?client_id=" +
+          '/api/progress?client_id=' +
           encodeURIComponent(
-            clientId()
+            client()
           )
         );
 
       progress = {};
 
-      for(
-        const item of
-        (progressResult.progress || [])
-      ){
+      (
+        p.progress || []
+      ).forEach(
+        x => {
+          progress[
+            x.audio_id
+          ] = x;
+        }
+      );
 
-        progress[item.audio_id] =
-          item;
-
-      }
-
-    }catch{
+    } catch {
 
       progress = {};
 
     }
 
+
     renderAudios();
 
-  }catch{
+  } catch {
 
-    $("audioList")
+    $('audioList')
       .innerHTML =
-      `<div class="empty">
-        فایل‌ها فعلاً قابل دریافت نیستند.
-      </div>`;
+      '<div class="empty">فهرست صوت‌ها فعلاً در دسترس نیست.</div>';
 
   }
 
 }
 
 
-/* RENDER AUDIO */
+function renderAudios() {
 
-function renderAudios(){
+  if (!audios.length) {
 
-  if(
-    !audios.length
-  ){
-
-    $("audioList")
+    $('audioList')
       .innerHTML =
-      `<div class="empty">
-        هنوز فایل صوتی منتشر نشده است.
-      </div>`;
+      '<div class="empty">هنوز فایل صوتی منتشر نشده است 🎧</div>';
 
     return;
+
   }
 
 
-  $("audioList")
+  $('audioList')
     .innerHTML =
-    audios.map(
-      audio => {
+    audios
+      .map(
+        a => {
 
-        const saved =
-          progress[audio.id];
+          const p =
+            progress[a.id];
 
-        const percent =
-          Math.max(
-            0,
-            Math.min(
-              100,
-              Number(
-                saved?.percent || 0
+          const pc =
+            Math.max(
+              0,
+              Math.min(
+                100,
+                Number(
+                  p?.percent || 0
+                )
               )
-            )
-          );
+            );
 
-        return `
-          <div class="audio-item">
 
-            <div class="audio-icon">
-              📖
-            </div>
+          return `
+<div class="audio-item">
 
-            <div>
+<div class="audio-icon">
+ق
+</div>
 
-              <div class="audio-title">
-                ${esc(audio.title)}
-              </div>
+<div>
 
-              <div class="audio-meta">
-                ${esc(
-                  audio.filename ||
-                  "فایل صوتی"
-                )}
-                ·
-                ${fa(
-                  percent.toFixed(0)
-                )}٪
-              </div>
+<div class="audio-title">
+${esc(a.title)}
+</div>
 
-              <div class="progress-mini">
-                <span
-                  style="width:${percent}%"
-                ></span>
-              </div>
+<div class="audio-meta">
+${esc(
+  a.filename ||
+  'فایل صوت قرآن'
+)}
+·
+${fa(
+  pc.toFixed(0)
+)}٪
+</div>
 
-            </div>
+<div class="mini-progress">
+<span style="width:${pc}%"></span>
+</div>
 
-            <button
-              class="play"
-              data-play="${audio.id}"
-            >
-              ▶
-            </button>
+</div>
 
-          </div>
-        `;
+<button
+class="play"
+data-play="${a.id}"
+>
+▶
+</button>
 
-      }
-    )
-    .join("");
+</div>
+`;
+
+        }
+      )
+      .join('');
 
 
   document
     .querySelectorAll(
-      "[data-play]"
+      '[data-play]'
     )
     .forEach(
-      button => {
+      b => {
 
-        button.onclick =
+        b.onclick =
           () =>
             playAudio(
               Number(
-                button.dataset.play
+                b.dataset.play
               )
             );
 
@@ -1983,61 +1191,54 @@ function renderAudios(){
 }
 
 
-/* PLAY AUDIO */
+function playAudio(id) {
 
-function playAudio(
-  id
-){
-
-  const item =
+  const a =
     audios.find(
       x => x.id === id
     );
 
-  if(!item)
+  if (!a)
     return;
 
-  currentAudio =
+  current =
     id;
 
-  $("nowTitle")
+  $('nowTitle')
     .textContent =
-    item.title;
+    a.title;
 
-  $("nowMeta")
+  $('nowMeta')
     .textContent =
-    item.filename ||
-    "فایل صوتی";
+    a.filename ||
+    'فایل صوت قرآن';
 
-
-  const player =
-    $("audio");
+  const p =
+    $('audio');
 
   const saved =
     progress[id];
 
-
-  player.src =
+  p.src =
     API +
-    "/api/audio?id=" +
+    '/api/audio?id=' +
     encodeURIComponent(id);
 
-
-  player.onloadedmetadata =
+  p.onloadedmetadata =
     () => {
 
-      if(
+      if (
         saved?.position &&
         saved.position <
-        player.duration - 2
-      ){
+          p.duration - 2
+      ) {
 
-        player.currentTime =
+        p.currentTime =
           saved.position;
 
       }
 
-      player
+      p
         .play()
         .catch(
           () => {}
@@ -2045,15 +1246,12 @@ function playAudio(
 
     };
 
-
-  player.load();
+  p.load();
 
 }
 
 
-/* PROGRESS */
-
-function scheduleSave(){
+function scheduleSave() {
 
   clearTimeout(
     saveTimer
@@ -2068,478 +1266,482 @@ function scheduleSave(){
 }
 
 
-async function saveProgress(){
+async function saveProgress() {
 
-  const player =
-    $("audio");
+  const p =
+    $('audio');
 
-  if(
-    !currentAudio ||
+  if (
+    !current ||
     !Number.isFinite(
-      player.duration
+      p.duration
     )
-  ){
-
+  )
     return;
-  }
 
-  try{
+  try {
 
-    const result =
+    const x =
       await api(
-        "/api/progress",
+        '/api/progress',
         {
-          method:"POST",
+          method:'POST',
 
-          body:JSON.stringify({
-            client_id:clientId(),
-            audio_id:currentAudio,
-            position:player.currentTime,
-            duration:player.duration
-          })
+          body:
+            JSON.stringify({
+              client_id:
+                client(),
+
+              audio_id:
+                current,
+
+              position:
+                p.currentTime,
+
+              duration:
+                p.duration
+            })
         }
       );
 
+    progress[current] = {
+      audio_id:
+        current,
 
-    progress[currentAudio] = {
-      audio_id:currentAudio,
-      position:player.currentTime,
-      duration:player.duration,
-      percent:result.percent
+      position:
+        p.currentTime,
+
+      duration:
+        p.duration,
+
+      percent:
+        x.percent
     };
-
 
     renderAudios();
 
-  }catch{}
+  } catch {}
 
 }
 
 
-/* TEACHER STATS */
+function renderTeacherStats(x) {
 
-async function teacherStats(){
+  const stats =
+    x.stats || [];
+
+  const students =
+    x.students || [];
+
+  const details =
+    x.details || [];
+
+
+  $('tStudents')
+    .textContent =
+    fa(
+      students.length
+    );
+
+  $('tAudios')
+    .textContent =
+    fa(
+      stats.length
+    );
+
+  $('tProgress')
+    .textContent =
+    fa(
+      details.length
+    );
+
+
+  const avg =
+    stats.length
+      ?
+      stats.reduce(
+        (
+          s,
+          a
+        ) =>
+          s +
+          Number(
+            a.average_percent || 0
+          ),
+        0
+      ) /
+      stats.length
+      :
+      0;
+
+  $('tAverage')
+    .textContent =
+    fa(
+      avg.toFixed(0)
+    ) +
+    '٪';
+
+
+  if (!stats.length) {
+
+    $('teacherList')
+      .innerHTML =
+      '<div class="empty">هنوز فایل صوتی منتشر نشده است.</div>';
+
+    return;
+
+  }
+
+
+  $('teacherList')
+    .innerHTML =
+    stats
+      .map(
+        a => `
+
+<div class="teacher-item">
+
+<div>
+
+<div class="teacher-title">
+${esc(
+  a.title ||
+  'بدون عنوان'
+)}
+</div>
+
+<div class="teacher-meta">
+
+${esc(
+  a.filename ||
+  'فایل صوت قرآن'
+)}
+
+·
+
+${fa(
+  a.listeners || 0
+)}
+شنونده
+
+· میانگین
+
+${fa(
+  Number(
+    a.average_percent || 0
+  ).toFixed(0)
+)}٪
+
+</div>
+
+</div>
+
+
+<div class="teacher-actions">
+
+<button
+class="btn ghost small"
+data-preview="${a.id}"
+>
+▶ پخش
+</button>
+
+<button
+class="btn ghost small"
+data-delete="${a.id}"
+>
+🗑 حذف
+</button>
+
+</div>
+
+</div>
+
+`
+      )
+      .join('');
+
+
+  document
+    .querySelectorAll(
+      '[data-preview]'
+    )
+    .forEach(
+      b => {
+
+        b.onclick =
+          () =>
+            window.open(
+              API +
+              '/api/audio?id=' +
+              encodeURIComponent(
+                b.dataset.preview
+              ),
+              '_blank'
+            );
+
+      }
+    );
+
+
+  document
+    .querySelectorAll(
+      '[data-delete]'
+    )
+    .forEach(
+      b => {
+
+        b.onclick =
+          () =>
+            deleteAudio(
+              b.dataset.delete
+            );
+
+      }
+    );
+
+}
+
+
+async function loadTeacherStats() {
 
   const code =
     sessionStorage.getItem(
-      "quran_teacher_code"
+      'sayad_teacher_code'
     );
 
-  if(!code)
+  if (!code)
     return;
 
 
-  $("teacherMessage")
+  $('teacherMessage')
     .textContent =
-    "در حال دریافت اطلاعات...";
+    'در حال دریافت آمار...';
 
 
-  try{
+  try {
 
-    const result =
+    const x =
       await api(
-        "/api/teacher/stats",
+        '/api/teacher/stats',
         {
           headers:{
-            "X-Teacher-Code":
+            'X-Teacher-Code':
               code
           }
         }
       );
 
+    if (!x.ok)
+      throw Error();
 
-    const stats =
-      result.stats || [];
-
-    const students =
-      result.students || [];
-
-    const details =
-      result.details || [];
-
-
-    $("tStudents")
-      .textContent =
-      fa(
-        students.length
-      );
-
-    $("tAudios")
-      .textContent =
-      fa(
-        stats.length
-      );
-
-    $("tProgress")
-      .textContent =
-      fa(
-        details.length
-      );
-
-
-    const average =
-      stats.length
-        ? stats.reduce(
-            (sum,item) =>
-              sum +
-              Number(
-                item.average_percent || 0
-              ),
-            0
-          ) / stats.length
-        : 0;
-
-
-    $("tAverage")
-      .textContent =
-      fa(
-        average.toFixed(0)
-      ) +
-      "٪";
-
-
-    renderTeacherList(
-      stats
+    renderTeacherStats(
+      x
     );
 
-
-    $("teacherMessage")
+    $('teacherMessage')
       .textContent =
-      "اطلاعات با موفقیت دریافت شد ✓";
+      'آمار با موفقیت دریافت شد ✓';
 
+  } catch (e) {
 
-  }catch(error){
-
-    $("teacherMessage")
+    $('teacherMessage')
       .textContent =
-      "پنل فعال است؛ دریافت آمار از Worker انجام نشد.";
+      'خطای Worker: ' +
+      (
+        e?.message ||
+        'پاسخ نامعتبر'
+      );
+
+    $('tStudents')
+      .textContent='—';
+
+    $('tAudios')
+      .textContent='—';
+
+    $('tProgress')
+      .textContent='—';
+
+    $('tAverage')
+      .textContent='—';
 
   }
 
 }
 
 
-/* TEACHER FILE LIST */
+async function deleteAudio(id) {
 
-function renderTeacherList(
-  stats
-){
-
-  if(!stats.length){
-
-    $("teacherList")
-      .innerHTML =
-      `<div class="empty">
-        هنوز فایلی منتشر نشده است.
-      </div>`;
-
-    return;
-  }
-
-
-  $("teacherList")
-    .innerHTML =
-    stats.map(
-      audio => {
-
-        const average =
-          Number(
-            audio.average_percent || 0
-          );
-
-
-        return `
-          <div class="teacher-item">
-
-            <div>
-
-              <div class="teacher-title">
-                ${esc(
-                  audio.title ||
-                  "بدون عنوان"
-                )}
-              </div>
-
-              <div class="teacher-meta">
-
-                ${esc(
-                  audio.filename ||
-                  "فایل صوتی"
-                )}
-
-                ·
-
-                ${fa(
-                  audio.listeners || 0
-                )}
-                شنونده
-
-                · میانگین
-                ${fa(
-                  average.toFixed(0)
-                )}٪
-
-              </div>
-
-            </div>
-
-
-            <div class="teacher-actions">
-
-              <button
-                class="btn ghost small"
-                data-preview="${audio.id}"
-              >
-                ▶ پخش
-              </button>
-
-              <button
-                class="btn ghost small"
-                data-delete="${audio.id}"
-              >
-                🗑 حذف
-              </button>
-
-            </div>
-
-          </div>
-        `;
-
-      }
-    )
-    .join("");
-
-
-  document
-    .querySelectorAll(
-      "[data-preview]"
-    )
-    .forEach(
-      button => {
-
-        button.onclick =
-          () => {
-
-            window.open(
-              API +
-              "/api/audio?id=" +
-              encodeURIComponent(
-                button.dataset.preview
-              ),
-              "_blank"
-            );
-
-          };
-
-      }
-    );
-
-
-  document
-    .querySelectorAll(
-      "[data-delete]"
-    )
-    .forEach(
-      button => {
-
-        button.onclick =
-          () =>
-            deleteAudio(
-              button.dataset.delete
-            );
-
-      }
-    );
-
-}
-
-
-/* DELETE */
-
-async function deleteAudio(
-  id
-){
-
-  if(
+  if (
     !confirm(
-      "این فایل حذف شود؟"
+      'این فایل حذف شود؟'
     )
-  ){
-
+  )
     return;
-  }
 
 
   const code =
     sessionStorage.getItem(
-      "quran_teacher_code"
+      'sayad_teacher_code'
     );
 
 
-  try{
+  try {
 
     await api(
-      "/api/teacher/delete?id=" +
+      '/api/teacher/delete?id=' +
       encodeURIComponent(id),
       {
-        method:"DELETE",
+        method:'DELETE',
 
         headers:{
-          "X-Teacher-Code":
+          'X-Teacher-Code':
             code
         }
       }
     );
 
+    await loadTeacherStats();
 
-    await teacherStats();
+  } catch (e) {
 
-
-  }catch{
-
-    $("teacherMessage")
+    $('teacherMessage')
       .textContent =
-      "حذف فایل انجام نشد.";
+      'حذف انجام نشد: ' +
+      (
+        e?.message ||
+        'خطای نامشخص'
+      );
 
   }
 
 }
 
 
-/* UPLOAD FILE NAME */
+$('uploadFile')
+  .onchange =
+  () => {
 
-$("uploadFile")
-  .addEventListener(
-    "change",
-    () => {
+    const f =
+      $('uploadFile')
+        .files[0];
 
-      const file =
-        $("uploadFile")
-          .files[0];
+    $('uploadFileName')
+      .textContent =
+      f
+        ? f.name
+        : 'فایلی انتخاب نشده';
 
-      $("uploadFileName")
-        .textContent =
-        file
-          ? file.name
-          : "هنوز فایلی انتخاب نشده";
-
-    }
-  );
+  };
 
 
-/* UPLOAD */
-
-$("uploadButton")
+$('uploadButton')
   .onclick =
   () => {
 
     const title =
-      $("uploadTitle")
+      $('uploadTitle')
         .value
         .trim();
 
     const file =
-      $("uploadFile")
+      $('uploadFile')
         .files[0];
 
     const code =
       sessionStorage.getItem(
-        "quran_teacher_code"
+        'sayad_teacher_code'
       );
 
 
-    if(!code){
+    if (!code) {
 
-      $("teacherMessage")
+      $('teacherMessage')
         .textContent =
-        "ابتدا وارد پنل معلم شو.";
+        'ابتدا وارد پنل معلم شو.';
 
       return;
+
     }
 
 
-    if(!title){
+    if (!title) {
 
-      $("teacherMessage")
+      $('teacherMessage')
         .textContent =
-        "عنوان صوت را وارد کن.";
+        'عنوان فایل را وارد کن.';
 
       return;
+
     }
 
 
-    if(!file){
+    if (!file) {
 
-      $("teacherMessage")
+      $('teacherMessage')
         .textContent =
-        "یک فایل صوتی انتخاب کن.";
+        'فایل صوتی را انتخاب کن.';
 
       return;
+
     }
 
 
-    if(
+    if (
       !file.type.startsWith(
-        "audio/"
+        'audio/'
       )
-    ){
+    ) {
 
-      $("teacherMessage")
+      $('teacherMessage')
         .textContent =
-        "فایل باید صوتی باشد.";
+        'فایل باید صوتی باشد.';
 
       return;
+
     }
 
 
-    if(
+    if (
       file.size >
       50 * 1024 * 1024
-    ){
+    ) {
 
-      $("teacherMessage")
+      $('teacherMessage')
         .textContent =
-        "حجم فایل بیشتر از 50MB است.";
+        'حداکثر حجم فایل 50MB است.';
 
       return;
+
     }
 
 
-    const form =
+    const fd =
       new FormData();
 
-    form.append(
-      "title",
+    fd.append(
+      'title',
       title
     );
 
-    form.append(
-      "file",
+    fd.append(
+      'file',
       file
     );
 
 
-    $("uploadProgress")
+    $('uploadProgress')
       .classList
-      .remove(
-        "hidden"
-      );
+      .remove('hidden');
 
-
-    $("uploadBar")
+    $('uploadBar')
       .style
       .width =
-      "0%";
+      '0%';
 
-
-    $("uploadPercent")
+    $('uploadPercent')
       .textContent =
-      "۰٪";
-
-
-    $("uploadButton")
-      .disabled =
-      true;
+      '۰٪';
 
 
     const xhr =
@@ -2547,43 +1749,40 @@ $("uploadButton")
 
 
     xhr.open(
-      "POST",
+      'POST',
       API +
-      "/api/teacher/upload"
+      '/api/teacher/upload'
     );
 
 
     xhr.setRequestHeader(
-      "X-Teacher-Code",
+      'X-Teacher-Code',
       code
     );
 
 
     xhr.upload.onprogress =
-      event => {
+      e => {
 
-        if(
-          event.lengthComputable
-        ){
+        if (
+          e.lengthComputable
+        ) {
 
-          const percent =
+          const p =
             Math.round(
-              event.loaded /
-              event.total *
+              e.loaded /
+              e.total *
               100
             );
 
-
-          $("uploadBar")
+          $('uploadBar')
             .style
             .width =
-            percent + "%";
+            p + '%';
 
-
-          $("uploadPercent")
+          $('uploadPercent')
             .textContent =
-            fa(percent) +
-            "٪";
+            fa(p) + '٪';
 
         }
 
@@ -2593,70 +1792,69 @@ $("uploadButton")
     xhr.onload =
       async () => {
 
-        $("uploadButton")
-          .disabled =
-          false;
+        let d = {};
 
+        try {
 
-        let data = {};
-
-
-        try{
-
-          data =
+          d =
             JSON.parse(
               xhr.responseText ||
-              "{}"
+              '{}'
             );
 
-        }catch{}
+        } catch {}
 
 
-        if(
+        if (
           xhr.status >= 200 &&
           xhr.status < 300 &&
-          data.ok !== false
-        ){
+          d.ok !== false
+        ) {
 
-          $("uploadTitle")
-            .value =
-            "";
+          $('uploadTitle')
+            .value='';
 
-          $("uploadFile")
-            .value =
-            "";
+          $('uploadFile')
+            .value='';
 
-          $("uploadFileName")
+          $('uploadFileName')
             .textContent =
-            "هنوز فایلی انتخاب نشده";
+            'فایلی انتخاب نشده';
 
-
-          $("uploadBar")
+          $('uploadBar')
             .style
             .width =
-            "100%";
+            '100%';
 
-
-          $("uploadPercent")
+          $('uploadPercent')
             .textContent =
-            "۱۰۰٪";
+            '۱۰۰٪';
 
-
-          $("teacherMessage")
+          $('teacherMessage')
             .textContent =
-            "فایل صوتی با موفقیت منتشر شد 🎉";
+            'فایل با موفقیت منتشر شد 🎉';
 
+          setTimeout(
+            () =>
+              $('uploadProgress')
+                .classList
+                .add('hidden'),
+            700
+          );
 
-          await teacherStats();
+          await loadTeacherStats();
 
+        } else {
 
-        }else{
+          $('uploadProgress')
+            .classList
+            .add('hidden');
 
-          $("teacherMessage")
+          $('teacherMessage')
             .textContent =
-            data.error ||
-            data.message ||
-            "آپلود فایل انجام نشد.";
+            d.error ||
+            d.message ||
+            'آپلود انجام نشد.';
 
         }
 
@@ -2666,266 +1864,259 @@ $("uploadButton")
     xhr.onerror =
       () => {
 
-        $("uploadButton")
-          .disabled =
-          false;
+        $('uploadProgress')
+          .classList
+          .add('hidden');
 
-        $("teacherMessage")
+        $('teacherMessage')
           .textContent =
-          "خطای شبکه هنگام آپلود.";
+          'خطای شبکه هنگام آپلود.';
 
       };
 
 
-    xhr.send(
-      form
-    );
+    xhr.send(fd);
 
   };
 
 
-/* BUTTONS */
-
-$("studentButton")
+$('studentBtn')
   .onclick =
   () => {
 
-    if(
+    if (
       localStorage.getItem(
-        "quran_logged"
-      ) === "1"
-    ){
+        'sayad_logged'
+      ) === '1'
+    ) {
 
-      $("helloName")
-        .textContent =
+      const n =
         localStorage.getItem(
-          "quran_name"
-        ) ||
-        "دوست من";
-
-
-      $("helloClass")
-        .textContent =
-        fa(
-          localStorage.getItem(
-            "quran_class"
-          ) || ""
+          'sayad_name'
         );
+
+      const c =
+        localStorage.getItem(
+          'sayad_class'
+        );
+
+
+      $('helloName')
+        .textContent =
+        n ||
+        'دوست من';
+
+      $('helloClass')
+        .textContent =
+        fa(c || '');
 
 
       showStudent();
 
-      loadStudentData();
+      loadStudent();
 
       return;
+
     }
 
 
-    $("studentLogin")
+    $('studentLogin')
       .scrollIntoView({
-        behavior:"smooth"
+        behavior:'smooth'
       });
 
+    $('studentName')
+      .focus();
 
   };
 
 
-$("aboutButton")
+$('aboutBtn')
   .onclick =
   () =>
-    openModal(
-      "aboutModal"
+    modal(
+      'aboutModal',
+      true
     );
 
 
-$("studentSave")
+$('studentSave')
   .onclick =
-  saveStudent;
+  loginStudent;
 
 
-$("refreshStudent")
+$('refresh')
   .onclick =
-  loadStudentData;
+  loadStudent;
 
 
-$("refreshTeacher")
-  .onclick =
-  teacherStats;
-
-
-$("studentLogout")
+$('logoutStudent')
   .onclick =
   () => {
 
     localStorage.removeItem(
-      "quran_logged"
+      'sayad_logged'
     );
 
     localStorage.removeItem(
-      "quran_name"
+      'sayad_name'
     );
 
     localStorage.removeItem(
-      "quran_class"
+      'sayad_class'
     );
 
     localStorage.removeItem(
-      "quran_client_id"
+      'sayad_client_id'
     );
 
-
-    $("audio")
+    $('audio')
       .pause();
 
-    $("audio")
+    $('audio')
       .removeAttribute(
-        "src"
+        'src'
       );
 
-
     showHome();
 
   };
 
 
-$("logoutTeacher")
-  .onclick =
-  () => {
-
-    sessionStorage.removeItem(
-      "quran_teacher_code"
-    );
-
-    showHome();
-
-  };
-
-
-/* TEACHER LOGIN */
-
-$("teacherLogin")
+$('teacherLogin')
   .onclick =
   async () => {
 
     const code =
-      $("teacherCode")
+      $('teacherCode')
         .value
         .trim();
 
-
-    $("teacherError")
-      .textContent =
-      "";
+    $('teacherError')
+      .textContent='';
 
 
-    if(!code){
+    if (!code) {
 
-      $("teacherError")
+      $('teacherError')
         .textContent =
-        "کد مدیریت را وارد کن.";
+        'کد مدیریت را وارد کن.';
 
       return;
+
     }
 
 
-    /*
-      پنل را باز می‌کنیم و کد را
-      برای درخواست‌های Worker نگه می‌داریم.
-    */
+    try {
 
-    sessionStorage.setItem(
-      "quran_teacher_code",
-      code
-    );
+      const x =
+        await api(
+          '/api/teacher/stats',
+          {
+            headers:{
+              'X-Teacher-Code':
+                code
+            }
+          }
+        );
 
-
-    closeModal(
-      "teacherModal"
-    );
-
-
-    $("teacherCode")
-      .value =
-      "";
+      if (!x.ok)
+        throw Error();
 
 
-    showTeacher();
+      sessionStorage.setItem(
+        'sayad_teacher_code',
+        code
+      );
 
 
-    $("teacherMessage")
-      .textContent =
-      "در حال دریافت اطلاعات...";
+      modal(
+        'teacherModal',
+        false
+      );
 
+      $('teacherCode')
+        .value='';
 
-    /*
-      اگر stats کار کند اطلاعات می‌آید.
-      اگر کار نکند خود پنل همچنان باز می‌ماند
-      و برای آپلود آماده است.
-    */
+      showTeacher();
 
-    await teacherStats();
+      renderTeacherStats(
+        x
+      );
+
+      $('teacherMessage')
+        .textContent =
+        'ورود موفق بود ✓';
+
+    } catch (e) {
+
+      $('teacherError')
+        .textContent =
+        'ورود ناموفق: ' +
+        (
+          e?.message ||
+          'Worker پاسخ نداد.'
+        );
+
+    }
 
   };
 
 
-/* MODAL CLOSE */
-
-document
-  .querySelectorAll(
-    "[data-close]"
-  )
-  .forEach(
-    element => {
-
-      element.onclick =
-        () =>
-          closeModal(
-            element.dataset.close
-          );
-
-    }
-  );
+$('refreshTeacher')
+  .onclick =
+  loadTeacherStats;
 
 
-/* PLAYER */
-
-$("play")
+$('logoutTeacher')
   .onclick =
   () => {
 
-    if(!currentAudio)
+    sessionStorage.removeItem(
+      'sayad_teacher_code'
+    );
+
+    showHome();
+
+  };
+
+
+$('play')
+  .onclick =
+  () => {
+
+    if (!current)
       return;
 
+    if (
+      $('audio').paused
+    ) {
 
-    const audio =
-      $("audio");
-
-
-    if(audio.paused){
-
-      audio
+      $('audio')
         .play()
         .catch(
           () => {}
         );
 
-    }else{
+    } else {
 
-      audio.pause();
+      $('audio')
+        .pause();
 
     }
 
   };
 
 
-$("back")
+$('back')
   .onclick =
   () => {
 
-    $("audio").currentTime =
+    $('audio').currentTime =
       Math.max(
         0,
-        $("audio").currentTime - 10
+        $('audio').currentTime -
+        10
       );
 
     scheduleSave();
@@ -2933,14 +2124,16 @@ $("back")
   };
 
 
-$("forward")
+$('forward')
   .onclick =
   () => {
 
-    $("audio").currentTime =
+    $('audio').currentTime =
       Math.min(
-        $("audio").duration || 0,
-        $("audio").currentTime + 10
+        $('audio').duration ||
+          0,
+        $('audio').currentTime +
+          10
       );
 
     scheduleSave();
@@ -2948,104 +2141,101 @@ $("forward")
   };
 
 
-$("audio")
-  .addEventListener(
-    "play",
-    () => {
-
-      $("play")
-        .textContent =
-        "❚❚";
-
-    }
-  );
+$('audio').onplay =
+  () =>
+    $('play')
+      .textContent =
+      '❚❚';
 
 
-$("audio")
-  .addEventListener(
-    "pause",
-    () => {
-
-      $("play")
-        .textContent =
-        "▶";
-
-      saveProgress();
-
-    }
-  );
-
-
-$("audio")
-  .addEventListener(
-    "timeupdate",
-    () => {
-
-      const player =
-        $("audio");
-
-
-      $("currentTime")
-        .textContent =
-        timeText(
-          player.currentTime
-        );
-
-
-      $("durationTime")
-        .textContent =
-        timeText(
-          player.duration
-        );
-
-
-      $("seek")
-        .value =
-        player.duration
-          ? (
-              player.currentTime /
-              player.duration *
-              100
-            )
-          : 0;
-
-
-      scheduleSave();
-
-    }
-  );
-
-
-$("seek")
-  .oninput =
+$('audio').onpause =
   () => {
 
-    $("audio").currentTime =
+    $('play')
+      .textContent =
+      '▶';
+
+    saveProgress();
+
+  };
+
+
+$('audio').ontimeupdate =
+  () => {
+
+    const p =
+      $('audio');
+
+    $('cur')
+      .textContent =
+      fmt(
+        p.currentTime
+      );
+
+    $('dur')
+      .textContent =
+      fmt(
+        p.duration
+      );
+
+    $('seek')
+      .value =
+      p.duration
+        ? (
+            p.currentTime /
+            p.duration
+          ) * 100
+        : 0;
+
+    scheduleSave();
+
+  };
+
+
+$('seek').oninput =
+  () => {
+
+    $('audio')
+      .currentTime =
       (
         Number(
-          $("seek").value
+          $('seek').value
         ) / 100
       ) *
       (
-        $("audio").duration || 0
+        $('audio').duration ||
+        0
       );
 
   };
 
 
-/* ENTER */
+document
+  .querySelectorAll(
+    '[data-close]'
+  )
+  .forEach(
+    e =>
+      e.onclick =
+        () =>
+          modal(
+            e.dataset.close,
+            false
+          )
+  );
 
-$("teacherCode")
+
+$('teacherCode')
   .addEventListener(
-    "keydown",
-    event => {
+    'keydown',
+    e => {
 
-      if(
-        event.key ===
-        "Enter"
-      ){
+      if (
+        e.key ===
+        'Enter'
+      ) {
 
-        $("teacherLogin")
+        $('teacherLogin')
           .click();
 
       }
@@ -3054,17 +2244,17 @@ $("teacherCode")
   );
 
 
-$("studentName")
+$('studentName')
   .addEventListener(
-    "keydown",
-    event => {
+    'keydown',
+    e => {
 
-      if(
-        event.key ===
-        "Enter"
-      ){
+      if (
+        e.key ===
+        'Enter'
+      ) {
 
-        $("studentClass")
+        $('studentClass')
           .focus();
 
       }
@@ -3073,17 +2263,17 @@ $("studentName")
   );
 
 
-$("studentClass")
+$('studentClass')
   .addEventListener(
-    "keydown",
-    event => {
+    'keydown',
+    e => {
 
-      if(
-        event.key ===
-        "Enter"
-      ){
+      if (
+        e.key ===
+        'Enter'
+      ) {
 
-        $("studentSave")
+        $('studentSave')
           .click();
 
       }
@@ -3092,74 +2282,67 @@ $("studentClass")
   );
 
 
-/* STARTUP */
+(function () {
 
-(function(){
-
-  const name =
+  const n =
     localStorage.getItem(
-      "quran_name"
+      'sayad_name'
     );
 
-  const klass =
+  const c =
     localStorage.getItem(
-      "quran_class"
+      'sayad_class'
     );
 
-  const teacherCode =
+  const t =
     sessionStorage.getItem(
-      "quran_teacher_code"
+      'sayad_teacher_code'
     );
 
 
-  if(name){
-
-    $("studentName")
+  if (n) {
+    $('studentName')
       .value =
-      name;
+      n;
+  }
 
+  if (c) {
+    $('studentClass')
+      .value =
+      c;
   }
 
 
-  if(klass){
-
-    $("studentClass")
-      .value =
-      klass;
-
-  }
-
-
-  if(teacherCode){
+  if (t) {
 
     showTeacher();
 
-    teacherStats();
+    loadTeacherStats();
 
     return;
 
   }
 
 
-  if(
+  if (
     localStorage.getItem(
-      "quran_logged"
-    ) === "1" &&
-    name &&
-    klass
-  ){
+      'sayad_logged'
+    ) === '1' &&
+    n &&
+    c
+  ) {
 
-    $("helloName")
+    $('helloName')
       .textContent =
-      name;
+      n;
 
-    $("helloClass")
+    $('helloClass')
       .textContent =
-      fa(klass);
+      fa(c);
 
     showStudent();
 
-    loadStudentData();
+    loadStudent();
 
     return;
 
